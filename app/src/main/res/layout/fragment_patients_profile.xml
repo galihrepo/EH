@@ -38,7 +38,7 @@
                         android:layout_column="1"
                         android:paddingRight="@dimen/padding_profile_icon"/>
                     <view
-                        style="@style/text_view_normal_black"
+                        style="@style/edit_text_normal"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -60,7 +60,7 @@
                         android:layout_column="1"
                         android:paddingRight="@dimen/padding_profile_icon"/>
                     <view
-                        style="@style/text_view_normal_black"
+                        style="@style/edit_text_normal"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -82,7 +82,7 @@
                         android:layout_column="1"
                         android:paddingRight="@dimen/padding_profile_icon"/>
                     <view
-                        style="@style/text_view_normal_black"
+                        style="@style/edit_text_normal"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -104,7 +104,7 @@
                         android:layout_column="1"
                         android:paddingRight="@dimen/padding_profile_icon"/>
                     <view
-                        style="@style/text_view_normal_black"
+                        style="@style/edit_text_normal"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -126,7 +126,7 @@
                         android:layout_column="1"
                         android:paddingRight="@dimen/padding_profile_icon"/>
                     <view
-                        style="@style/text_view_normal_black"
+                        style="@style/edit_text_normal"
                         android:id="@+id/birthday_et"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -149,7 +149,7 @@
                         android:layout_column="1"
                         android:paddingRight="@dimen/padding_profile_icon"/>
                     <view
-                        style="@style/text_view_normal_black"
+                        style="@style/edit_text_normal"
                         android:id="@+id/gender_et"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -172,7 +172,7 @@
                         android:layout_column="1"
                         android:paddingRight="@dimen/padding_profile_icon"/>
                     <view
-                        style="@style/text_view_normal_black"
+                        style="@style/edit_text_normal"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -194,7 +194,7 @@
                         android:layout_column="1"
                         android:paddingRight="@dimen/padding_profile_icon"/>
                     <view
-                        style="@style/text_view_normal_black"
+                        style="@style/edit_text_normal"
                         android:id="@+id/blood_type_et"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"

@@ -18,6 +18,18 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="AppTheme.NoActionBar">
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <!--<item name="colorControlNormal">@color/gray_1</item>-->
+        <!--<item name="colorControlActivated">@color/red_old</item>-->
+        <!--<item name="colorControlHighlight">@color/red_old</item>-->
+
+        <!--&lt;!&ndash; change icon navigation drawer indicator color&ndash;&gt;-->
+        <!--<item name="drawerArrowStyle">@style/DrawerArrowStyle</item>-->
+    </style>
+
     <!--<style name="AppTheme.NoActionBar">-->
         <!--<item name="windowActionBar">false</item>-->
         <!--<item name="windowNoTitle">true</item>-->
@@ -57,6 +69,12 @@
         <item name="android:textSize">@dimen/size_textview_very_small</item>
     </style>
 
+    <style name="edit_text_normal" parent="Widget.AppCompat.EditText">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/size_textview_normal</item>
+    </style>
+
     <style name="text_view_small_white" parent="text_view_small">
         <item name="android:textColor">@android:color/white</item>
     </style>
@@ -93,6 +111,19 @@
         <item name="android:textColor">@color/green_10</item>
     </style>
     <style name="text_view_big_grey" parent="text_view_big">
+        <item name="android:textColor">@color/grey_8</item>
+    </style>
+
+    <style name="text_view_very_big_white" parent="text_view_very_big">
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+    <style name="text_view_very_big_black" parent="text_view_very_big">
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+    <style name="text_view_very_big_green" parent="text_view_very_big">
+        <item name="android:textColor">@color/green_10</item>
+    </style>
+    <style name="text_view_very_big_grey" parent="text_view_very_big">
         <item name="android:textColor">@color/grey_8</item>
     </style>
 </resources>

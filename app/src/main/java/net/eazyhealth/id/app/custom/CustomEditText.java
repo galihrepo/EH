@@ -7,6 +7,8 @@ import android.os.Build;
 import android.util.AttributeSet;
 import android.widget.EditText;
 
+import net.eazyhealth.id.app.R;
+
 /**
  * Created by GALIH ADITYO on 3/22/2016.
  */

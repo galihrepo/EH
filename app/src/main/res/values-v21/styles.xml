@@ -19,6 +19,19 @@
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
     </style>
 
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:statusBarColor">@color/colorPrimaryDark</item>
+        <!--<item name="colorControlNormal">@color/gray_1</item>-->
+        <!--<item name="colorControlActivated">@color/red_old</item>-->
+        <!--<item name="colorControlHighlight">@color/red_old</item>-->
+
+        <!--&lt;!&ndash; change icon navigation drawer indicator color&ndash;&gt;-->
+        <!--<item name="drawerArrowStyle">@style/DrawerArrowStyle</item>-->
+    </style>
+
     <style name="custom_date_picker_dialog" parent="android:Theme.Holo.Light.Dialog">
         <item name="android:windowBackground">@color/full_tranparent</item>
     </style>
