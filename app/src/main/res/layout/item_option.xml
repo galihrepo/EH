@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <view
+        android:id="@+id/item_tv"
+        android:layout_width="match_parent"
+        style="@style/text_view_normal_green"
+        class="net.eazyhealth.id.app.custom.CustomTextView"
+        android:text="galih"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:background="@drawable/btn_option"/>
+</LinearLayout>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/sidemenu_schedule"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Checkup Schedule" />
+        <item
+            android:id="@+id/sidemenu_history"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="History Checkup" />
+        <item
+            android:id="@+id/sidemenu_profile"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="Profile" />
+        <item
+            android:id="@+id/sidemenu_info"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="Info" />
+        <item
+            android:id="@+id/sidemenu_tips"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="Healthy Tips" />
+        <item
+            android:id="@+id/sidemenu_logout"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="Logout" />
+    </group>
+</menu>

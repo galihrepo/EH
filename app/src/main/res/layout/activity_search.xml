@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="net.eazyhealth.id.app.activity.SearchActivity">
+    <view
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        class="net.eazyhealth.id.app.custom.CustomLinearLayout"
+        android:orientation="horizontal"
+        android:background="?attr/colorPrimary"
+        android:theme="@style/AppTheme.AppBarOverlay"
+        android:gravity="center_vertical">
+        <view
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            class="net.eazyhealth.id.app.custom.CustomImageView"
+            android:src="@android:drawable/ic_menu_search"
+            android:paddingRight="7.5dp"
+            android:paddingLeft="15dp"/>
+        <view
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            class="net.eazyhealth.id.app.custom.CustomAutoCompleteTextView"/>
+        <view
+            style="@style/Widget.AppCompat.Toolbar.Button.Navigation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingRight="15dp"
+            android:paddingLeft="15dp"
+            android:layout_marginLeft="20dp"
+            class="net.eazyhealth.id.app.custom.CustomImageView"
+            android:src="@android:drawable/ic_menu_close_clear_cancel"/>
+    </view>
+</RelativeLayout>

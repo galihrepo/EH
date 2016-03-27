@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<net.eazyhealth.id.app.custom.CustomRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="net.eazyhealth.id.app.activity.SplashActivity">
+
+    <view
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        class="net.eazyhealth.id.app.custom.CustomImageView"
+        android:src="@drawable/logo"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"/>
+
+</net.eazyhealth.id.app.custom.CustomRelativeLayout>

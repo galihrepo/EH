@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">EazyHealth</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="forgot_password">Forgot Password</string>
+    <string name="register">Register</string>
+    <string name="pipe">|</string>
+    <string name="show_password">Show Password</string>
+    <string name="search_title_patient">Search Schedule</string>
+    <string name="update">Update</string>
+    <string name="cancel">Cancel</string>
+    <string name="ok">Ok</string>
+    <string name="title">Title</string>
+</resources>

@@ -1,0 +1,98 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <!-- Disable keyboard full screen in landscape mode -->
+        <item name="android:imeOptions">flagNoExtractUi</item>
+
+        <!-- Disable keyboard appear and automatic layout move if keyboard overlay edittext -->
+        <item name="android:windowSoftInputMode">stateHidden|adjustResize</item>
+
+        <!-- Hide label in activity -->
+        <item name="android:windowNoTitle">true</item>
+
+
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <!--<style name="AppTheme.NoActionBar">-->
+        <!--<item name="windowActionBar">false</item>-->
+        <!--<item name="windowNoTitle">true</item>-->
+    <!--</style>-->
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="custom_date_picker_dialog" parent="android:Theme.Holo.Light.Dialog" tools:targetApi="honeycomb">
+        <item name="android:windowBackground">@color/full_tranparent</item>
+    </style>
+
+    <style name="text_view_very_big">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/size_textview_very_big</item>
+    </style>
+    <style name="text_view_big">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/size_textview_big</item>
+    </style>
+    <style name="text_view_normal">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/size_textview_normal</item>
+    </style>
+    <style name="text_view_small">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/size_textview_small</item>
+    </style>
+    <style name="text_view_very_small">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/size_textview_very_small</item>
+    </style>
+
+    <style name="text_view_small_white" parent="text_view_small">
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+    <style name="text_view_small_black" parent="text_view_small">
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+    <style name="text_view_small_green" parent="text_view_small">
+        <item name="android:textColor">@color/green_10</item>
+    </style>
+    <style name="text_view_small_grey" parent="text_view_small">
+        <item name="android:textColor">@color/grey_8</item>
+    </style>
+
+    <style name="text_view_normal_white" parent="text_view_normal">
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+    <style name="text_view_normal_black" parent="text_view_normal">
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+    <style name="text_view_normal_green" parent="text_view_normal">
+        <item name="android:textColor">@color/green_10</item>
+    </style>
+    <style name="text_view_normal_grey" parent="text_view_normal">
+        <item name="android:textColor">@color/grey_8</item>
+    </style>
+
+    <style name="text_view_big_white" parent="text_view_big">
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+    <style name="text_view_big_black" parent="text_view_big">
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+    <style name="text_view_big_green" parent="text_view_big">
+        <item name="android:textColor">@color/green_10</item>
+    </style>
+    <style name="text_view_big_grey" parent="text_view_big">
+        <item name="android:textColor">@color/grey_8</item>
+    </style>
+</resources>

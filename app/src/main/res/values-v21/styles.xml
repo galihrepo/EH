@@ -1,0 +1,25 @@
+<resources>
+
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <!-- Disable keyboard full screen in landscape mode -->
+        <item name="android:imeOptions">flagNoExtractUi</item>
+
+        <!-- Disable keyboard appear -->
+        <item name="android:windowSoftInputMode">stateHidden|adjustResize</item>
+
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+
+        <!-- Hide label in activity -->
+        <!--<item name="android:windowNoTitle">true</item>-->
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+    </style>
+
+    <style name="custom_date_picker_dialog" parent="android:Theme.Holo.Light.Dialog">
+        <item name="android:windowBackground">@color/full_tranparent</item>
+    </style>
+</resources>
