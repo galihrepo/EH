@@ -1,28 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<net.eazyhealth.id.app.custom.CustomScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<net.eazyhealth.id.app.custom.CustomScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="net.eazyhealth.id.app.activity.LoginActivity">
+    tools:context="net.eazyhealth.id.app.activity.LoginActivity"
+    >
 
-    <view
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        class="net.eazyhealth.id.app.custom.CustomLinearLayout"
-        android:orientation="vertical"
-        android:gravity="center_horizontal">
+        android:layout_height="match_parent">
         <view
+            android:id="@+id/image"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             class="net.eazyhealth.id.app.custom.CustomImageView"
-            android:src="@drawable/logo"/>
+            android:src="@drawable/logo"
+            android:layout_centerHorizontal="true"/>
         <view
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             class="net.eazyhealth.id.app.custom.CustomLinearLayout"
             android:orientation="vertical"
             android:paddingLeft="30dp"
-            android:paddingRight="30dp">
+            android:paddingRight="30dp"
+            android:layout_below="@+id/image">
             <view
                 style="@style/edit_text_normal"
                 android:id="@+id/username_et"
@@ -97,5 +99,11 @@
                     android:drawableBottom="@drawable/dashed_line"/>
             </view>
         </view>
-    </view>
+        <android.support.design.widget.CoordinatorLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/sb"/>
+    </RelativeLayout>
 </net.eazyhealth.id.app.custom.CustomScrollView>

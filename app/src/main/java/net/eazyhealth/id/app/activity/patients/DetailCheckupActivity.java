@@ -6,8 +6,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import net.eazyhealth.id.app.R;
+import net.eazyhealth.id.app.activity.HomeActivity;
 import net.eazyhealth.id.app.custom.CustomAppCompatActivity;
-import net.eazyhealth.id.app.custom.CustomImageView;
 import net.eazyhealth.id.app.custom.CustomTextView;
 
 public class DetailCheckupActivity extends CustomAppCompatActivity {
@@ -53,7 +53,7 @@ public class DetailCheckupActivity extends CustomAppCompatActivity {
     }
 
     private void backToHome() {
-        Intent i = new Intent(getApplicationContext(), HomePatientsActivity.class);
+        Intent i = new Intent(getApplicationContext(), HomeActivity.class);
         startActivity(i);
         finish();
     }

@@ -7,7 +7,6 @@ import android.view.View;
 import android.widget.CompoundButton;
 
 import net.eazyhealth.id.app.R;
-import net.eazyhealth.id.app.activity.patients.HomePatientsActivity;
 import net.eazyhealth.id.app.custom.CustomAppCompatActivity;
 import net.eazyhealth.id.app.custom.CustomButton;
 import net.eazyhealth.id.app.custom.CustomCheckBox;
@@ -27,7 +26,7 @@ public class LoginActivity extends CustomAppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), HomePatientsActivity.class);
+                Intent i = new Intent(getApplicationContext(), HomeActivity.class);
                 startActivity(i);
                 finish();
             }

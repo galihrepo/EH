@@ -20,7 +20,7 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
-        app:headerLayout="@layout/nav_header_home_patient"
-        app:menu="@menu/sidemenu_patients" />
+        app:headerLayout="@layout/nav_header_home_patient"/>
+    <!--app:menu="@menu/sidemenu_patients"-->
 
 </android.support.v4.widget.DrawerLayout>

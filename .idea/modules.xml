@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/EazyHealth.iml" filepath="$PROJECT_DIR$/EazyHealth.iml" />
+      <module fileurl="file://$PROJECT_DIR$/EH.iml" filepath="$PROJECT_DIR$/EH.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
