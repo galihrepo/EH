@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="net.eazyhealth.id.app.activity.LoginActivity"
-    >
+    tools:context="net.eazyhealth.id.app.activity.LoginActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -32,7 +31,8 @@
                 android:layout_height="wrap_content"
                 class="net.eazyhealth.id.app.custom.CustomAutoCompleteTextView"
                 android:hint="@string/username"
-                android:inputType="textEmailAddress" />
+                android:inputType="textEmailAddress"
+                android:nextFocusDown="@+id/password_et"/>
             <view
                 style="@style/edit_text_normal"
                 android:id="@+id/password_et"
@@ -40,7 +40,8 @@
                 android:layout_height="wrap_content"
                 class="net.eazyhealth.id.app.custom.CustomEditText"
                 android:hint="@string/password"
-                android:inputType="textPassword" />
+                android:inputType="textPassword"
+                android:imeOptions="actionDone"/>
             <view
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

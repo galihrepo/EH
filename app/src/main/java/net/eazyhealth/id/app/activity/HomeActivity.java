@@ -32,12 +32,6 @@ public class HomeActivity extends CustomAppCompatActivity
     @Override
     protected void onResume() {
         super.onResume();
-        if (accountPreferences.getUsername() == null) {
-            navigationView.inflateMenu(R.menu.sidemenu);
-        } else {
-            navigationView.inflateMenu(R.menu.sidemenu_patients);
-        }
-        menuDashboard();
     }
 
     @Override
@@ -61,6 +55,13 @@ public class HomeActivity extends CustomAppCompatActivity
 
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        if (accountPreferences.getUsername() == null) {
+            navigationView.inflateMenu(R.menu.sidemenu);
+        } else {
+            navigationView.inflateMenu(R.menu.sidemenu_patients);
+        }
+        menuDashboard();
     }
 
     private void includeView() {

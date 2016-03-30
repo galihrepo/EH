@@ -126,4 +126,10 @@
     <style name="text_view_very_big_grey" parent="text_view_very_big">
         <item name="android:textColor">@color/grey_8</item>
     </style>
+
+    <style name="slider_indicator" parent="AndroidImageSlider_Corner_Oval_Orange">
+        <item name="selected_color">@color/colorPrimary</item>
+        <item name="unselected_color">@color/grey_5</item>
+        <item name="android:background">@drawable/bg_indicator</item>
+    </style>
 </resources>
