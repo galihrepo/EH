@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:id="@+id/menu_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <view
+            android:id="@+id/menu_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            class="net.eazyhealth.id.app.custom.CustomImageView"
+            android:src="@drawable/medical_check_up"/>
+        <view
+            android:id="@+id/menu_tv"
+            style="@style/text_view_big_white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            class="net.eazyhealth.id.app.custom.CustomTextView"
+            android:layout_alignParentBottom="true"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            android:singleLine="true"
+            android:ellipsize="end"
+            android:background="@color/bg_indicator_black_transparent"/>
+    </RelativeLayout>
+</RelativeLayout>

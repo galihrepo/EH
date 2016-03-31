@@ -42,6 +42,17 @@
     <color name="red_9">#C62828</color>
     <color name="red_10">#B71C1C</color>
 
+    <color name="pink_0">#FF4081</color>
+    <color name="pink_1">#FCE4EC</color>
+    <color name="pink_2">#F8BBD0</color>
+    <color name="pink_3">#F48FB1</color>
+    <color name="pink_4">#F06292</color>
+    <color name="pink_5">#EC407A</color>
+    <color name="pink_6">#E91E63</color>
+    <color name="pink_7">#D81B60</color>
+    <color name="pink_8">#C2185B</color>
+    <color name="pink_9">#AD1457</color>
+    <color name="pink_10">#880E4F</color>
     <!--
         Transparent
         100% — FF
@@ -67,6 +78,19 @@
         0% — 00
     -->
     <color name="bg_indicator_white_transparent">#8CFFFFFF</color>
+    <color name="bg_indicator_black_transparent">#8C000000</color>
+    <color name="bg_indicator_grey_transparent">#8C9E9E9E</color>
+
     <color name="btn_green_default">#004D40</color>
     <color name="btn_green_focus">#66004D40</color>
+
+    <color name="text_primary_dark">#D9000000</color>
+    <color name="text_secondary_dark">#8C000000</color>
+    <color name="text_hint_dark">#59000000</color>
+    <color name="divider_dark">#26000000</color>
+
+    <color name="text_primary_light">#FFFFFF</color>
+    <color name="text_secondary_light">#B3FFFFFF</color>
+    <color name="text_hint_light">#80FFFFFF</color>
+    <color name="divider_light">#26FFFFFF</color>
 </resources>

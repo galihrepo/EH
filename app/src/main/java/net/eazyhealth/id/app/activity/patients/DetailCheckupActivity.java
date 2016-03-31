@@ -1,12 +1,10 @@
 package net.eazyhealth.id.app.activity.patients;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import net.eazyhealth.id.app.R;
-import net.eazyhealth.id.app.activity.HomeActivity;
 import net.eazyhealth.id.app.custom.CustomAppCompatActivity;
 import net.eazyhealth.id.app.custom.CustomTextView;
 
@@ -53,8 +51,11 @@ public class DetailCheckupActivity extends CustomAppCompatActivity {
     }
 
     private void backToHome() {
-        Intent i = new Intent(getApplicationContext(), HomeActivity.class);
-        startActivity(i);
+//        Intent i = new Intent(getApplicationContext(), HomeActivity.class);
+//        startActivity(i);
+//        finish();
+
+        setResult(RESULT_OK);
         finish();
     }
 }

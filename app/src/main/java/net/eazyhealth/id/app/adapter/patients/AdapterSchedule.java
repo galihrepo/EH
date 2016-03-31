@@ -78,8 +78,9 @@ public class AdapterSchedule extends RecyclerView.Adapter<AdapterSchedule.ViewHo
             public void onClick(View v) {
                 Intent i = new Intent(context.getApplicationContext(), DetailCheckupActivity.class);
                 i.putExtra("title", "Detail Schedule");
-                context.startActivity(i);
-                ((Activity)context).finish();
+                ((Activity)context).startActivityForResult(i, 0);
+//                context.startActivity(i);
+//                ((Activity)context).finish();
             }
         });
     }

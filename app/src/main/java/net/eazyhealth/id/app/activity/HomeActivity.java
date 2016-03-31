@@ -22,8 +22,7 @@ import net.eazyhealth.id.app.fragment.patients.FragmentPatientsSchedule;
 import net.eazyhealth.id.app.interfaces.OnDialogTemplateTwoButton;
 import net.eazyhealth.id.app.preferences.AccountPreferences;
 
-public class HomeActivity extends CustomAppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+public class HomeActivity extends CustomAppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private FrameLayout placeholder;
     private AccountPreferences accountPreferences;
@@ -136,8 +135,11 @@ public class HomeActivity extends CustomAppCompatActivity
 
                 @Override
                 public void onTemplateDialogYes() {
+                    accountPreferences.setUsername(null);
+                    accountPreferences.setPassword(null);
                     dialog.dismiss();
-                    finish();
+                    recreate();
+//                    finish();
                 }
             });
             dialog.show(getSupportFragmentManager(), "");

@@ -16,4 +16,8 @@
     <dimen name="padding_profile_icon">10dp</dimen>
     <dimen name="line">0.8dp</dimen>
     <dimen name="line_recycleview">0.3dp</dimen>
+
+    <dimen name="corner_radius">2dp</dimen>
+    <dimen name="shadow">4dp</dimen>
+    <dimen name="blur">4dp</dimen>
 </resources>

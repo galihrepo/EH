@@ -17,5 +17,5 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|right"
         android:src="@drawable/stethoscope"
-        app:rippleColor="@color/colorPrimary"/>
+        app:rippleColor="@color/colorPrimary" />
 </FrameLayout>
