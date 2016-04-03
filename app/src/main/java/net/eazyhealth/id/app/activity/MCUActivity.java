@@ -1,0 +1,126 @@
+package net.eazyhealth.id.app.activity;
+
+import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
+import android.view.View;
+
+import net.eazyhealth.id.app.R;
+import net.eazyhealth.id.app.adapter.AdapterItem;
+import net.eazyhealth.id.app.adapter.patients.AdapterSchedule;
+import net.eazyhealth.id.app.custom.CustomAppCompatActivity;
+import net.eazyhealth.id.app.custom.CustomRippleView;
+import net.eazyhealth.id.app.custom.CustomSwipeRefreshLayout;
+import net.eazyhealth.id.app.custom.CustomTextView;
+import net.eazyhealth.id.app.custom.CustomToast;
+import net.eazyhealth.id.app.custom.RippleViewAndroidM;
+import net.eazyhealth.id.app.model.Patients;
+import net.eazyhealth.id.app.rest.EndPoints;
+import net.eazyhealth.id.app.rest.RestClient;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+public class MCUActivity extends CustomAppCompatActivity implements SwipeRefreshLayout.OnRefreshListener {
+
+    public static final String BUNDLE_TITLE = MCUActivity.class.getSimpleName() + "title";
+    private String title = "";
+
+    private Toolbar toolbar;
+    private CustomSwipeRefreshLayout swipeRefreshLayout;
+    private RecyclerView mRecyclerView;
+    private RecyclerView.Adapter mAdapter;
+    private RecyclerView.LayoutManager mLayoutManager;
+    private CustomTextView tvTitle;
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        swipeRefreshLayout.post(new Runnable() {
+            @Override
+            public void run() {
+                swipeRefreshLayout.setRefreshing(true);
+                request();
+            }
+        });
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_mcu);
+        bundle();
+        initView();
+        initVariable();
+    }
+
+    private void bundle() {
+        if (getIntent().getExtras() != null) {
+            title = getIntent().getStringExtra(BUNDLE_TITLE);
+        }
+    }
+
+    private void initVariable() {
+        tvTitle.setText(title);
+
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setTitle("");
+
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        swipeRefreshLayout.setOnRefreshListener(this);
+
+        // recycleview
+        mRecyclerView.setHasFixedSize(true);
+        mLayoutManager = new LinearLayoutManager(this);
+        mRecyclerView.setLayoutManager(mLayoutManager);
+    }
+
+    private void initView() {
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        mRecyclerView = (RecyclerView) findViewById(R.id.rv);
+        swipeRefreshLayout = (CustomSwipeRefreshLayout) findViewById(R.id.swipe_refresh);
+        tvTitle = (CustomTextView) findViewById(R.id.title_tv);
+    }
+
+    @Override
+    public void onRefresh() {
+        request();
+    }
+
+    private void request() {
+        EndPoints service = RestClient.getInstance().getRetrofit().create(EndPoints.class);
+        Call<Patients> repos = service.getPatients();
+        repos.enqueue(new Callback<Patients>() {
+            @Override
+            public void onResponse(Call<Patients> call, Response<Patients> response) {
+                try {
+//                    CustomToast.setMessage(getApplicationContext(), response.body().toString());
+//                    CustomToast.setMessage(getApplicationContext(), response.message());
+//                    CustomToast.setMessage(getApplicationContext(), response.raw().toString());
+                    mAdapter = new AdapterItem(getApplicationContext(), response.body().getData());
+                    mRecyclerView.setAdapter(mAdapter);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                swipeRefreshLayout.setRefreshing(false);
+            }
+
+            @Override
+            public void onFailure(Call<Patients> call, Throwable t) {
+                swipeRefreshLayout.setRefreshing(false);
+            }
+        });
+    }
+}

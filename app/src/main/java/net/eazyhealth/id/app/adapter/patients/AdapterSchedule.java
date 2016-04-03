@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 
 import net.eazyhealth.id.app.R;
-import net.eazyhealth.id.app.activity.patients.DetailCheckupActivity;
+import net.eazyhealth.id.app.activity.DetailTemplateActivity;
 import net.eazyhealth.id.app.custom.CustomTextView;
 import net.eazyhealth.id.app.model.response.PatientsScheduleResponse;
 
@@ -76,7 +76,7 @@ public class AdapterSchedule extends RecyclerView.Adapter<AdapterSchedule.ViewHo
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(context.getApplicationContext(), DetailCheckupActivity.class);
+                Intent i = new Intent(context.getApplicationContext(), DetailTemplateActivity.class);
                 i.putExtra("title", "Detail Schedule");
                 ((Activity)context).startActivityForResult(i, 0);
 //                context.startActivity(i);

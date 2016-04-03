@@ -1,5 +1,6 @@
 package net.eazyhealth.id.app.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -16,6 +17,7 @@ import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.daimajia.slider.library.SliderTypes.DefaultSliderView;
 
 import net.eazyhealth.id.app.R;
+import net.eazyhealth.id.app.activity.MCUActivity;
 import net.eazyhealth.id.app.custom.CustomImageView;
 import net.eazyhealth.id.app.custom.CustomTextView;
 
@@ -70,7 +72,9 @@ public class FragmentDashboard extends Fragment {
             layout.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
+                    Intent i = new Intent(getActivity(), MCUActivity.class);
+                    i.putExtra(MCUActivity.BUNDLE_TITLE, getString(R.string.mcu));
+                    startActivityForResult(i, 0);
                 }
             });
 

@@ -7,13 +7,12 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import net.eazyhealth.id.app.R;
-import net.eazyhealth.id.app.activity.patients.DetailCheckupActivity;
+import net.eazyhealth.id.app.activity.DetailTemplateActivity;
 import net.eazyhealth.id.app.adapter.patients.AdapterSchedule;
 import net.eazyhealth.id.app.model.response.PatientsScheduleResponse;
 
@@ -95,7 +94,7 @@ public class FragmentPatientsSchedule extends Fragment {
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getActivity(), DetailCheckupActivity.class);
+                Intent i = new Intent(getActivity(), DetailTemplateActivity.class);
                 i.putExtra("title", "Add Schedule");
                 startActivity(i);
                 getActivity().finish();
