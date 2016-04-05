@@ -44,20 +44,6 @@ public class RestClient {
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(client)
                 .build();
-
-//        EndPoints service = retrofit.create(EndPoints.class);
-//        Call<Patients> repos = service.getPatients();
-//        repos.enqueue(new Callback<Patients>() {
-//            @Override
-//            public void onResponse(Call<Patients> call, Response<Patients> response) {
-//
-//            }
-//
-//            @Override
-//            public void onFailure(Call<Patients> call, Throwable t) {
-//
-//            }
-//        });
     }
 
     public static RestClient getInstance() {

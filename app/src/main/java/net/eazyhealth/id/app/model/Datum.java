@@ -8,9 +8,6 @@ import com.google.gson.annotations.SerializedName;
  */
 public class Datum {
 
-    @SerializedName("created")
-    @Expose
-    private Integer created;
     @SerializedName("name")
     @Expose
     private String name;
@@ -20,24 +17,6 @@ public class Datum {
     @SerializedName("__meta")
     @Expose
     private String Meta;
-
-    /**
-     *
-     * @return
-     * The created
-     */
-    public Integer getCreated() {
-        return created;
-    }
-
-    /**
-     *
-     * @param created
-     * The created
-     */
-    public void setCreated(Integer created) {
-        this.created = created;
-    }
 
     /**
      *
