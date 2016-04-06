@@ -31,7 +31,6 @@ import retrofit2.Response;
 public class MCUActivity extends CustomAppCompatActivity implements SwipeRefreshLayout.OnRefreshListener {
 
     public static final String BUNDLE_TITLE = MCUActivity.class.getSimpleName() + "title";
-    private static final int DELAY = 2;
     private String title = "";
     private String nextPage = null;
     private Toolbar toolbar;
@@ -39,8 +38,6 @@ public class MCUActivity extends CustomAppCompatActivity implements SwipeRefresh
     private RecyclerView mRecyclerView;
     private AdapterItemLoadMore mAdapter;
     private CustomTextView tvTitle;
-
-    private Handler handler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,7 +79,7 @@ public class MCUActivity extends CustomAppCompatActivity implements SwipeRefresh
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                onBackPressed();
             }
         });
 
@@ -91,28 +88,6 @@ public class MCUActivity extends CustomAppCompatActivity implements SwipeRefresh
         // recycleview
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        mAdapter = new AdapterItemLoadMore(getApplicationContext(), null, mRecyclerView);
-        mRecyclerView.setAdapter(mAdapter);
-        mAdapter.setOnLoadMoreListener(new AdapterItemLoadMore.OnLoadMoreListener() {
-            @Override
-            public void onLoadMore() {
-                if (nextPage == null) {
-                    return;
-                }
-
-                if (handler == null) {
-                    handler = new Handler();
-                }
-                mAdapter.addProgress();
-                handler.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        requestNextPage();
-                    }
-                }, DELAY);
-
-            }
-        });
     }
 
     @Override
@@ -127,14 +102,25 @@ public class MCUActivity extends CustomAppCompatActivity implements SwipeRefresh
             @Override
             public void onResponse(Call<Patients> call, Response<Patients> response) {
                 try {
-                    mAdapter.clear();
+                    mAdapter = new AdapterItemLoadMore(getApplicationContext(), null, mRecyclerView);
+                    mRecyclerView.setAdapter(mAdapter);
+                    mAdapter.setOnLoadMoreListener(new AdapterItemLoadMore.OnLoadMoreListener() {
+                        @Override
+                        public void onLoadMore() {
+                            requestNextPage();
+                        }
+                    });
                     mAdapter.addItem(response.body().getData());
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                if (response.body().getNextPage() != null) {
+
+                if (response.body().getNextPage() == null) {
+                    nextPage = null;
+                } else {
                     nextPage = response.body().getNextPage().replace(ServiceAddress.BASE_URL, "");
                 }
+
                 swipeRefreshLayout.setRefreshing(false);
             }
 
@@ -145,12 +131,18 @@ public class MCUActivity extends CustomAppCompatActivity implements SwipeRefresh
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+
                 swipeRefreshLayout.setRefreshing(false);
             }
         });
     }
 
     private void requestNextPage() {
+        if (nextPage == null) {
+            return;
+        }
+        mAdapter.addProgress();
+
         EndPoints service = RestClient.getInstance().getRetrofit().create(EndPoints.class);
         Call<Patients> repos = service.getPatients(nextPage);
         repos.enqueue(new Callback<Patients>() {
@@ -179,5 +171,10 @@ public class MCUActivity extends CustomAppCompatActivity implements SwipeRefresh
                 mAdapter.setLoaded();
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
     }
 }
