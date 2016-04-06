@@ -1,6 +1,7 @@
 package net.eazyhealth.id.app.rest;
 
 import net.eazyhealth.id.app.model.Patients;
+import net.eazyhealth.id.app.model.response.mcu.McuModel;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -17,4 +18,11 @@ public interface EndPoints {
 
     @GET
     Call<Patients> getPatients(@Url String nextPage);
+
+//    @GET("mcu?loadRelations=clinic%2Cdetail&props=product_name%2Cprice%2CobjectId")
+    @GET("mcu?loadRelations=clinic")
+    Call<McuModel> getMcuList();
+
+    @GET
+    Call<McuModel> getMcuList(@Url String nextPage);
 }

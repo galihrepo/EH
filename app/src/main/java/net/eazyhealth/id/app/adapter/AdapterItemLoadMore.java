@@ -1,6 +1,8 @@
 package net.eazyhealth.id.app.adapter;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -10,8 +12,10 @@ import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 
 import net.eazyhealth.id.app.R;
+import net.eazyhealth.id.app.activity.DetailTemplateActivity;
 import net.eazyhealth.id.app.custom.CustomTextView;
 import net.eazyhealth.id.app.model.Datum;
+import net.eazyhealth.id.app.model.response.mcu.DatumMcu;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -23,15 +27,16 @@ public class AdapterItemLoadMore extends RecyclerView.Adapter<RecyclerView.ViewH
     private final int VIEW_ITEM = 1;
     private final int VIEW_PROG = 0;
 
-    private List<Datum> mDataset;
+    private List<DatumMcu> mDataset;
+    private Context context;
 
-    // The minimum amount of items to have below your current scroll position before loading more.
     private int visibleThreshold = 2;
     private int lastVisibleItem, totalItemCount;
     private boolean loading;
     private OnLoadMoreListener onLoadMoreListener;
 
-    public AdapterItemLoadMore(Context context, List<Datum> myDataSet, RecyclerView recyclerView) {
+    public AdapterItemLoadMore(Context context, List<DatumMcu> myDataSet, RecyclerView recyclerView) {
+        this.context = context;
         if (myDataSet == null) {
             mDataset = new LinkedList<>();
         } else {
@@ -68,8 +73,8 @@ public class AdapterItemLoadMore extends RecyclerView.Adapter<RecyclerView.ViewH
         }
     }
 
-    public void addItem(List<Datum> list) {
-        for (Datum data:list) {
+    public void addItem(List<DatumMcu> list) {
+        for (DatumMcu data:list) {
             mDataset.add(data);
             notifyItemInserted(mDataset.size());
         }
@@ -113,10 +118,20 @@ public class AdapterItemLoadMore extends RecyclerView.Adapter<RecyclerView.ViewH
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         if (holder instanceof TextViewHolder) {
-            ((TextViewHolder) holder).tvClinic.setText(mDataset.get(position).getName());
-            ((TextViewHolder) holder).tvDate.setText("1");
-            ((TextViewHolder) holder).tvPackage.setText("2");
-            ((TextViewHolder) holder).tvType.setText("3");
+            DatumMcu data = mDataset.get(position);
+            ((TextViewHolder) holder).tvClinic.setText(data.getProductName());
+            ((TextViewHolder) holder).tvType.setText(data.getClinic().getName());
+            ((TextViewHolder) holder).tvPackage.setText(data.getClinic().getAddress()+", "+data.getClinic().getCity());
+            ((TextViewHolder) holder).tvDate.setText(data.getPrice()+"");
+            ((TextViewHolder) holder).cardView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent i = new Intent(context.getApplicationContext(), DetailTemplateActivity.class);
+                    i.putExtra("title", "Detail Schedule");
+                    ((Activity) context).startActivityForResult(i, 0);
+
+                }
+            });
         } else {
             ((ProgressViewHolder) holder).progressBar.setIndeterminate(true);
         }

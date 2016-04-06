@@ -9,6 +9,7 @@ import java.io.IOException;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
+import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -28,14 +29,19 @@ public class RestClient {
             @Override
             public okhttp3.Response intercept(Chain chain) throws IOException {
                 Request request = chain.request().newBuilder()
-                        .addHeader("application-id","469CF0F5-E169-AD1D-FF1B-3EF6C2E61900")
-                        .addHeader("secret-key", "472BC705-76EF-9039-FF05-1AA304CF5200")
+                        .addHeader("application-id", "DC65F61D-434E-30C3-FF61-33AC7AE03100")
+                        .addHeader("secret-key", "C418FA96-BB50-D77E-FFB5-0F134FFDFB00")
                         .build();
                 return chain.proceed(request);
             }
         };
 
+        // enable logging
+        HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
+        loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+
         OkHttpClient.Builder builder = new OkHttpClient.Builder();
+        builder.addInterceptor(loggingInterceptor);
         builder.interceptors().add(interceptor);
         OkHttpClient client = builder.build();
 

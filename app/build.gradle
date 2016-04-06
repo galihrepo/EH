@@ -18,9 +18,9 @@ android {
             zipAlignEnabled true
         }
         debug {
-//            minifyEnabled true
-//            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-//            zipAlignEnabled true
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            zipAlignEnabled true
         }
     }
 }
@@ -35,13 +35,14 @@ dependencies {
 
     compile 'net.danlew:android.joda:2.9.0'
     compile 'com.squareup.picasso:picasso:2.5.2'
-//    compile 'com.google.code.gson:gson:2.4'
+
+    // retrofit
     compile 'com.squareup.retrofit2:retrofit:2.0.1'
     compile 'com.squareup.retrofit2:converter-gson:2.0.1'
     compile 'com.google.code.gson:gson:2.6.2'
     compile 'com.squareup.okhttp3:okhttp:3.2.0'
-
-
+    // retrofit enable logging
+    compile 'com.squareup.okhttp3:logging-interceptor:3.0.1'
 
     // slider image
     compile 'com.android.support:support-v4:+'

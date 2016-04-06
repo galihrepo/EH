@@ -20,9 +20,13 @@ import net.eazyhealth.id.app.custom.CustomTextView;
 import net.eazyhealth.id.app.custom.CustomToast;
 import net.eazyhealth.id.app.custom.RippleViewAndroidM;
 import net.eazyhealth.id.app.model.Patients;
+import net.eazyhealth.id.app.model.response.mcu.McuModel;
 import net.eazyhealth.id.app.rest.EndPoints;
 import net.eazyhealth.id.app.rest.RestClient;
+import net.eazyhealth.id.app.rest.RestHelper;
 import net.eazyhealth.id.app.rest.ServiceAddress;
+
+import java.io.IOException;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -97,35 +101,42 @@ public class MCUActivity extends CustomAppCompatActivity implements SwipeRefresh
 
     private void request() {
         EndPoints service = RestClient.getInstance().getRetrofit().create(EndPoints.class);
-        Call<Patients> repos = service.getPatients();
-        repos.enqueue(new Callback<Patients>() {
+        Call<McuModel> repos = service.getMcuList();
+        repos.enqueue(new Callback<McuModel>() {
             @Override
-            public void onResponse(Call<Patients> call, Response<Patients> response) {
-                try {
-                    mAdapter = new AdapterItemLoadMore(getApplicationContext(), null, mRecyclerView);
-                    mRecyclerView.setAdapter(mAdapter);
-                    mAdapter.setOnLoadMoreListener(new AdapterItemLoadMore.OnLoadMoreListener() {
-                        @Override
-                        public void onLoadMore() {
-                            requestNextPage();
-                        }
-                    });
-                    mAdapter.addItem(response.body().getData());
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+            public void onResponse(Call<McuModel> call, Response<McuModel> response) {
+                if (response.isSuccessful()) {
+                    try {
+                        mAdapter = new AdapterItemLoadMore(MCUActivity.this, null, mRecyclerView);
+                        mRecyclerView.setAdapter(mAdapter);
+                        mAdapter.setOnLoadMoreListener(new AdapterItemLoadMore.OnLoadMoreListener() {
+                            @Override
+                            public void onLoadMore() {requestNextPage();
+                            }
+                        });
+                        mAdapter.addItem(response.body().getData());
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
 
-                if (response.body().getNextPage() == null) {
-                    nextPage = null;
+                    if (response.body().getNextPage() == null) {
+                        nextPage = null;
+                    } else {
+                        nextPage = RestHelper.removeBaseUrl(response.body().getNextPage());
+                    }
                 } else {
-                    nextPage = response.body().getNextPage().replace(ServiceAddress.BASE_URL, "");
+                    try {
+                        CustomToast.setMessage(getApplicationContext(), response.errorBody().string());
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 }
 
                 swipeRefreshLayout.setRefreshing(false);
             }
 
             @Override
-            public void onFailure(Call<Patients> call, Throwable t) {
+            public void onFailure(Call<McuModel> call, Throwable t) {
                 try {
                     CustomToast.setMessage(getApplicationContext(), t.getMessage());
                 } catch (Exception e) {
@@ -144,29 +155,36 @@ public class MCUActivity extends CustomAppCompatActivity implements SwipeRefresh
         mAdapter.addProgress();
 
         EndPoints service = RestClient.getInstance().getRetrofit().create(EndPoints.class);
-        Call<Patients> repos = service.getPatients(nextPage);
-        repos.enqueue(new Callback<Patients>() {
+        Call<McuModel> repos = service.getMcuList(nextPage);
+        repos.enqueue(new Callback<McuModel>() {
             @Override
-            public void onResponse(Call<Patients> call, Response<Patients> response) {
+            public void onResponse(Call<McuModel> call, Response<McuModel> response) {
                 mAdapter.removeProgress();
-                try {
-                    mAdapter.addItem(response.body().getData());
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
 
-                if (response.body().getNextPage() == null) {
-                    nextPage = null;
-                } else {
-                    nextPage = response.body().getNextPage().replace(ServiceAddress.BASE_URL, "");
+                if (response.isSuccessful()) {
+                    try {
+                        mAdapter.addItem(response.body().getData());
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+
+                    if (response.body().getNextPage() == null) {
+                        nextPage = null;
+                    } else {
+                        nextPage = RestHelper.removeBaseUrl(response.body().getNextPage());
+                    }
                 }
 
                 mAdapter.setLoaded();
             }
 
             @Override
-            public void onFailure(Call<Patients> call, Throwable t) {
-                CustomToast.setMessage(getApplicationContext(), t.getMessage());
+            public void onFailure(Call<McuModel> call, Throwable t) {
+                try {
+                    CustomToast.setMessage(getApplicationContext(), t.getMessage());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
                 mAdapter.removeProgress();
                 mAdapter.setLoaded();
             }
