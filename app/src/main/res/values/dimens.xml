@@ -20,4 +20,7 @@
     <dimen name="corner_radius">2dp</dimen>
     <dimen name="shadow">4dp</dimen>
     <dimen name="blur">4dp</dimen>
+
+    <dimen name="padding_content_dialog_top_bottom">7.5dp</dimen>
+    <dimen name="padding_content_dialog_left_right">3.5dp</dimen>
 </resources>
