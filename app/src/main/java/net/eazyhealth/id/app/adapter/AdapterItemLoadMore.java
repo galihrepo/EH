@@ -1,8 +1,10 @@
 package net.eazyhealth.id.app.adapter;
 
 import android.app.Activity;
+import android.app.ActivityOptions;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -128,8 +130,11 @@ public class AdapterItemLoadMore extends RecyclerView.Adapter<RecyclerView.ViewH
                 public void onClick(View v) {
                     Intent i = new Intent(context.getApplicationContext(), DetailTemplateActivity.class);
                     i.putExtra("title", "Detail Schedule");
-                    ((Activity) context).startActivityForResult(i, 0);
-
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                        ((Activity) context).startActivityForResult(i, 0, ActivityOptions.makeSceneTransitionAnimation((Activity) context).toBundle());
+                    } else {
+                        ((Activity) context).startActivityForResult(i, 0);
+                    }
                 }
             });
         } else {

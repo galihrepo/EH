@@ -162,6 +162,13 @@
 #  public protected private *;
 #}
 
+# backendless
+-dontwarn com.backendless.**
+-dontwarn weborb.**
+-keep class weborb.** {*;}
+-keep class com.backendless.** {*;}
+-keep class com.tactel.memegenerator.model.** {*;}
+
 # --- Additional config by GALIH ADITYO ---
 
 # The support library contains references to newer platform versions.

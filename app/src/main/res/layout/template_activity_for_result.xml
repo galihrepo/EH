@@ -28,11 +28,10 @@
                     android:ellipsize="end"/>
         </android.support.v7.widget.Toolbar>
     </android.support.design.widget.AppBarLayout>
-    <LinearLayout
+    <FrameLayout
         android:id="@+id/placeholder"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
         android:layout_below="@+id/appbar"
         android:background="@android:color/white"/>
 </RelativeLayout>

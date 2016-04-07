@@ -1,6 +1,8 @@
 package net.eazyhealth.id.app.fragment;
 
+import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.text.method.PasswordTransformationMethod;
@@ -9,6 +11,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CompoundButton;
 
+import com.backendless.Backendless;
+import com.backendless.BackendlessUser;
+import com.backendless.async.callback.BackendlessCallback;
+import com.backendless.exceptions.BackendlessFault;
+
 import net.eazyhealth.id.app.R;
 import net.eazyhealth.id.app.custom.CustomAutoCompleteTextView;
 import net.eazyhealth.id.app.custom.CustomButton;
@@ -16,6 +23,9 @@ import net.eazyhealth.id.app.custom.CustomCheckBox;
 import net.eazyhealth.id.app.custom.CustomEditText;
 import net.eazyhealth.id.app.custom.CustomToast;
 import net.eazyhealth.id.app.preferences.AccountPreferences;
+import net.steamcrafted.loadtoast.LoadToast;
+
+import java.util.logging.LogRecord;
 
 /**
  * Created by GALIH ADITYO on 3/29/2016.
@@ -62,11 +72,43 @@ public class FragmentLogin extends Fragment {
                     return;
                 }
 
-                AccountPreferences accountPreferences = new AccountPreferences(getActivity());
-                accountPreferences.setUsername(etUsername.getText().toString());
-                accountPreferences.setPassword(etPassword.getText().toString());
+//                AccountPreferences accountPreferences = new AccountPreferences(getActivity());
+//                accountPreferences.setUsername(etUsername.getText().toString());
+//                accountPreferences.setPassword(etPassword.getText().toString());
 
-                getActivity().recreate();
+                BackendlessUser user = new BackendlessUser();
+                user.setEmail(etUsername.getText().toString());
+                user.setPassword(etPassword.getText().toString());
+
+                final LoadToast load = new LoadToast(getActivity());
+                load.setText("Sending data..");
+                load.setTranslationY(100);
+                load.setTextColor(Color.WHITE);
+                load.setBackgroundColor(getResources().getColor(R.color.green_6));
+                load.setProgressColor(getResources().getColor(R.color.colorPrimaryDark));
+                load.show();
+
+                Backendless.UserService.register(user, new BackendlessCallback<BackendlessUser>() {
+                    @Override
+                    public void handleResponse(BackendlessUser response) {
+//                        CustomToast.setMessage(getActivity(), response.toString());
+                        load.success();
+                        Handler handler = new Handler();
+                        handler.postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                getActivity().recreate();
+                            }
+                        }, 2000);
+                    }
+
+                    @Override
+                    public void handleFault(BackendlessFault fault) {
+                        super.handleFault(fault);
+                        CustomToast.setMessage(getActivity(), fault.toString());
+                        load.error();
+                    }
+                });
             }
         });
 

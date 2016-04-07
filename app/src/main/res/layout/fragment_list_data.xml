@@ -1,36 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="net.eazyhealth.id.app.activity.MCUActivity">
-    <android.support.design.widget.AppBarLayout
-        android:id="@+id/appbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay"
-        app:elevation="0dp">
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:popupTheme="@style/AppTheme.PopupOverlay">
-            <!-- add shadow -->
-            <!--app:popupTheme="@style/AppTheme.PopupOverlay"-->
-            <view
-                android:id="@+id/title_tv"
-                style="@style/text_view_big_white"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                class="net.eazyhealth.id.app.custom.CustomTextView"
-                android:text="PASIEN"
-                android:singleLine="true"
-                android:ellipsize="end"
-                android:gravity="center"/>
-        </android.support.v7.widget.Toolbar>
-    </android.support.design.widget.AppBarLayout>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
     <LinearLayout
         android:id="@+id/sort"
         android:layout_width="match_parent"
@@ -108,4 +79,4 @@
                 android:layout_height="match_parent"/>
         </view>
     </FrameLayout>
-</RelativeLayout>
+</LinearLayout>

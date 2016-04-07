@@ -1,30 +1,23 @@
-package net.eazyhealth.id.app.activity;
+package net.eazyhealth.id.app.fragment;
 
-import android.os.Handler;
-import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 
 import net.eazyhealth.id.app.R;
-import net.eazyhealth.id.app.adapter.AdapterItem;
 import net.eazyhealth.id.app.adapter.AdapterItemLoadMore;
-import net.eazyhealth.id.app.adapter.patients.AdapterSchedule;
-import net.eazyhealth.id.app.custom.CustomAppCompatActivity;
-import net.eazyhealth.id.app.custom.CustomRippleView;
+import net.eazyhealth.id.app.application.MyApplication;
 import net.eazyhealth.id.app.custom.CustomSwipeRefreshLayout;
-import net.eazyhealth.id.app.custom.CustomTextView;
 import net.eazyhealth.id.app.custom.CustomToast;
-import net.eazyhealth.id.app.custom.RippleViewAndroidM;
-import net.eazyhealth.id.app.model.Patients;
 import net.eazyhealth.id.app.model.response.mcu.McuModel;
 import net.eazyhealth.id.app.rest.EndPoints;
-import net.eazyhealth.id.app.rest.RestClient;
 import net.eazyhealth.id.app.rest.RestHelper;
-import net.eazyhealth.id.app.rest.ServiceAddress;
 
 import java.io.IOException;
 
@@ -32,30 +25,23 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class MCUActivity extends CustomAppCompatActivity implements SwipeRefreshLayout.OnRefreshListener {
+/**
+ * Created by GALIH ADITYO on 4/7/2016.
+ */
+public class FragmentListData extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
 
-    public static final String BUNDLE_TITLE = MCUActivity.class.getSimpleName() + "title";
-    private String title = "";
-    private String nextPage = null;
-    private Toolbar toolbar;
     private CustomSwipeRefreshLayout swipeRefreshLayout;
     private RecyclerView mRecyclerView;
     private AdapterItemLoadMore mAdapter;
-    private CustomTextView tvTitle;
+    private String nextPage = null;
 
+    @Nullable
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_mcu);
-        bundle();
-        initView();
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_list_data, container, false);
+        initView(view);
         initVariable();
-    }
-
-    private void bundle() {
-        if (getIntent().getExtras() != null) {
-            title = getIntent().getStringExtra(BUNDLE_TITLE);
-        }
+        return view;
     }
 
     private void initVariable() {
@@ -68,30 +54,14 @@ public class MCUActivity extends CustomAppCompatActivity implements SwipeRefresh
         });
     }
 
-    private void initView() {
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        mRecyclerView = (RecyclerView) findViewById(R.id.rv);
-        swipeRefreshLayout = (CustomSwipeRefreshLayout) findViewById(R.id.swipe_refresh);
-        tvTitle = (CustomTextView) findViewById(R.id.title_tv);
-        tvTitle.setText(title);
-
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setTitle("");
-
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBackPressed();
-            }
-        });
-
+    private void initView(View view) {
+        mRecyclerView = (RecyclerView) view.findViewById(R.id.rv);
+        swipeRefreshLayout = (CustomSwipeRefreshLayout) view.findViewById(R.id.swipe_refresh);
         swipeRefreshLayout.setOnRefreshListener(this);
 
         // recycleview
         mRecyclerView.setHasFixedSize(true);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
     }
 
     @Override
@@ -100,18 +70,19 @@ public class MCUActivity extends CustomAppCompatActivity implements SwipeRefresh
     }
 
     private void request() {
-        EndPoints service = RestClient.getInstance().getRetrofit().create(EndPoints.class);
+        EndPoints service = MyApplication.getInstance().getRetrofit().create(EndPoints.class);
         Call<McuModel> repos = service.getMcuList();
         repos.enqueue(new Callback<McuModel>() {
             @Override
             public void onResponse(Call<McuModel> call, Response<McuModel> response) {
                 if (response.isSuccessful()) {
                     try {
-                        mAdapter = new AdapterItemLoadMore(MCUActivity.this, null, mRecyclerView);
+                        mAdapter = new AdapterItemLoadMore(getActivity(), null, mRecyclerView);
                         mRecyclerView.setAdapter(mAdapter);
                         mAdapter.setOnLoadMoreListener(new AdapterItemLoadMore.OnLoadMoreListener() {
                             @Override
-                            public void onLoadMore() {requestNextPage();
+                            public void onLoadMore() {
+                                requestNextPage();
                             }
                         });
                         mAdapter.addItem(response.body().getData());
@@ -126,7 +97,7 @@ public class MCUActivity extends CustomAppCompatActivity implements SwipeRefresh
                     }
                 } else {
                     try {
-                        CustomToast.setMessage(getApplicationContext(), response.errorBody().string());
+                        CustomToast.setMessage(getActivity(), response.errorBody().string());
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
@@ -138,7 +109,7 @@ public class MCUActivity extends CustomAppCompatActivity implements SwipeRefresh
             @Override
             public void onFailure(Call<McuModel> call, Throwable t) {
                 try {
-                    CustomToast.setMessage(getApplicationContext(), t.getMessage());
+                    CustomToast.setMessage(getActivity(), t.getMessage());
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -154,7 +125,7 @@ public class MCUActivity extends CustomAppCompatActivity implements SwipeRefresh
         }
         mAdapter.addProgress();
 
-        EndPoints service = RestClient.getInstance().getRetrofit().create(EndPoints.class);
+        EndPoints service = MyApplication.getInstance().getRetrofit().create(EndPoints.class);
         Call<McuModel> repos = service.getMcuList(nextPage);
         repos.enqueue(new Callback<McuModel>() {
             @Override
@@ -181,7 +152,7 @@ public class MCUActivity extends CustomAppCompatActivity implements SwipeRefresh
             @Override
             public void onFailure(Call<McuModel> call, Throwable t) {
                 try {
-                    CustomToast.setMessage(getApplicationContext(), t.getMessage());
+                    CustomToast.setMessage(getActivity(), t.getMessage());
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -189,10 +160,5 @@ public class MCUActivity extends CustomAppCompatActivity implements SwipeRefresh
                 mAdapter.setLoaded();
             }
         });
-    }
-
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
     }
 }
