@@ -7,6 +7,7 @@ import android.view.View;
 import net.eazyhealth.id.app.R;
 import net.eazyhealth.id.app.custom.CustomAppCompatActivity;
 import net.eazyhealth.id.app.custom.CustomTextView;
+import net.eazyhealth.id.app.fragment.FragmentItemDetail;
 
 public class DetailTemplateActivity extends CustomAppCompatActivity {
 
@@ -19,6 +20,7 @@ public class DetailTemplateActivity extends CustomAppCompatActivity {
 
         initView();
         bundle();
+        getSupportFragmentManager().beginTransaction().replace(R.id.placeholder, new FragmentItemDetail()).commit();
     }
 
     private void bundle() {

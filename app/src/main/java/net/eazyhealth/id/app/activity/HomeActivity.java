@@ -27,6 +27,7 @@ public class HomeActivity extends CustomAppCompatActivity implements NavigationV
     private FrameLayout placeholder;
     private AccountPreferences accountPreferences;
     private NavigationView navigationView;
+    private Toolbar toolbar;
 
     @Override
     protected void onResume() {
@@ -39,10 +40,6 @@ public class HomeActivity extends CustomAppCompatActivity implements NavigationV
         setContentView(R.layout.activity_home);
 
         accountPreferences = new AccountPreferences(this);
-
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle("");
-        setSupportActionBar(toolbar);
 
         includeView();
 
@@ -66,6 +63,12 @@ public class HomeActivity extends CustomAppCompatActivity implements NavigationV
     private void includeView() {
         View include = findViewById(R.id.include);
         View insideInclude = include.findViewById(R.id.include);
+        View templateToolbar = include.findViewById(R.id.include_toolbar);
+
+        toolbar = (Toolbar) templateToolbar.findViewById(R.id.toolbar);
+        toolbar.setTitle("");
+        setSupportActionBar(toolbar);
+
         placeholder = (FrameLayout) insideInclude.findViewById(R.id.placeholder);
     }
 

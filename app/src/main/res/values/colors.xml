@@ -53,6 +53,19 @@
     <color name="pink_8">#C2185B</color>
     <color name="pink_9">#AD1457</color>
     <color name="pink_10">#880E4F</color>
+
+    <color name="blue_0">#3F51B5</color>
+    <color name="blue_1">#E8EAF6</color>
+    <color name="blue_2">#C5CAE9</color>
+    <color name="blue_3">#9FA8DA</color>
+    <color name="blue_4">#7986CB</color>
+    <color name="blue_5">#5C6BC0</color>
+    <color name="blue_6">#3F51B5</color>
+    <color name="blue_7">#3949AB</color>
+    <color name="blue_8">#303F9F</color>
+    <color name="blue_9">#283593</color>
+    <color name="blue_10">#1A237E</color>
+
     <!--
         Transparent
         100% — FF

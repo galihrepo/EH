@@ -43,6 +43,11 @@
         <item name="android:windowBackground">@color/full_tranparent</item>
     </style>
 
+    <style name="text_view_super_big">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/size_textview_super_big</item>
+    </style>
     <style name="text_view_very_big">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
@@ -87,6 +92,9 @@
     <style name="text_view_small_grey" parent="text_view_small">
         <item name="android:textColor">@color/text_secondary_dark</item>
     </style>
+    <style name="text_view_small_red" parent="text_view_small">
+        <item name="android:textColor">@color/red_0</item>
+    </style>
 
     <style name="text_view_normal_white" parent="text_view_normal">
         <item name="android:textColor">@android:color/white</item>
@@ -96,6 +104,12 @@
     </style>
     <style name="text_view_normal_green" parent="text_view_normal">
         <item name="android:textColor">@color/green_10</item>
+    </style>
+    <style name="text_view_normal_pink" parent="text_view_normal">
+        <item name="android:textColor">@color/pink_7</item>
+    </style>
+    <style name="text_view_normal_blue" parent="text_view_normal">
+        <item name="android:textColor">@color/blue_10</item>
     </style>
     <style name="text_view_normal_grey" parent="text_view_normal">
         <item name="android:textColor">@color/text_secondary_dark</item>
@@ -126,6 +140,12 @@
     <style name="text_view_very_big_grey" parent="text_view_very_big">
         <item name="android:textColor">@color/text_secondary_dark</item>
     </style>
+
+    <style name="text_view_super_big_red" parent="text_view_super_big">
+        <item name="android:textColor">@color/red_0</item>
+    </style>
+
+
 
     <style name="slider_indicator" parent="AndroidImageSlider_Corner_Oval_Orange">
         <item name="selected_color">@color/colorPrimary</item>

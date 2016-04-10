@@ -21,7 +21,7 @@ public class DatumMcu {
     @SerializedName("detail")
     @Expose
     private List<Object> detail = new ArrayList<Object>();
-    @SerializedName("product_name")
+    @SerializedName("productName")
     @Expose
     private String productName;
     @SerializedName("objectId")

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        app:popupTheme="@style/AppTheme.PopupOverlay">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+            <view
+                android:id="@+id/title_tv"
+                style="@style/text_view_big_white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                class="net.eazyhealth.id.app.custom.CustomTextView"
+                android:text="PASIEN"/>
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="@dimen/padding_notification"
+                android:layout_marginRight="10dp">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/icon_buy"/>
+                <com.thinkcool.circletextimageview.CircleTextImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:citv_text_color="@android:color/white"
+                    app:citv_text_text="1"
+                    app:citv_text_size="12sp"
+                    app:citv_text_padding="5dp"
+                    app:citv_fill_color="@color/red_0" />
+            </FrameLayout>
+        </LinearLayout>
+    </android.support.v7.widget.Toolbar>
+</LinearLayout>

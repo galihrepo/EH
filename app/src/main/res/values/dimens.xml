@@ -7,6 +7,7 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
 
+    <dimen name="size_textview_super_big">20sp</dimen>
     <dimen name="size_textview_very_big">18sp</dimen>
     <dimen name="size_textview_big">16sp</dimen>
     <dimen name="size_textview_normal">14sp</dimen>
@@ -23,4 +24,15 @@
 
     <dimen name="padding_content_dialog_top_bottom">7.5dp</dimen>
     <dimen name="padding_content_dialog_left_right">3.5dp</dimen>
+
+    <dimen name="padding_button">6dp</dimen>
+
+    <dimen name="padding_item_detail_top_bottom">20dp</dimen>
+    <dimen name="padding_item_detail_left_right">15dp</dimen>
+
+    <dimen name="margin_top_subitem">10dp</dimen>
+    <dimen name="margin_bottom_subitem">4dp</dimen>
+    <dimen name="line_spacing">1.5dp</dimen>
+
+    <dimen name="padding_notification">6.5dp</dimen>
 </resources>

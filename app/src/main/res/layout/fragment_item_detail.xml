@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <view
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            class="net.eazyhealth.id.app.custom.CustomScrollView">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingLeft="@dimen/padding_item_detail_left_right"
+                android:paddingRight="@dimen/padding_item_detail_left_right"
+                android:paddingTop="@dimen/padding_item_detail_top_bottom"
+                android:paddingBottom="@dimen/padding_item_detail_top_bottom">
+                <view
+                    style="@style/text_view_very_big_black"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    class="net.eazyhealth.id.app.custom.CustomTextView"
+                    android:text="Klinik Sehat Lelaki"
+                    android:layout_marginBottom="@dimen/margin_bottom_subitem"/>
+                <view
+                    style="@style/text_view_normal_grey"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    class="net.eazyhealth.id.app.custom.CustomTextView"
+                    android:text="Jalan Panglima Sudirman 5"/>
+                <view
+                    style="@style/text_view_normal_grey"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    class="net.eazyhealth.id.app.custom.CustomTextView"
+                    android:text="Jakarta Selatan"
+                    android:layout_marginTop="@dimen/line_spacing"/>
+
+                <view
+                    style="@style/text_view_very_big_green"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    class="net.eazyhealth.id.app.custom.CustomTextView"
+                    android:text="Fungsi Ginjal"
+                    android:layout_marginBottom="@dimen/margin_bottom_subitem"
+                    android:layout_marginTop="@dimen/margin_top_subitem"/>
+                <view
+                    style="@style/text_view_normal_black"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    class="net.eazyhealth.id.app.custom.CustomTextView"
+                    android:text="LH,\nAnalisa Sperma,\nAnalisa Kencing"
+                    android:lineSpacingExtra="@dimen/line_spacing"/>
+
+            </LinearLayout>
+        </view>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:background="@drawable/bg_grey_green_line"
+            android:padding="5dp">
+            <view
+                style="@style/text_view_super_big_red"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                class="net.eazyhealth.id.app.custom.CustomTextView"
+                android:text="Rp 150.000"
+                android:textColor="@color/red_8"
+                android:gravity="center"/>
+            <view
+                android:id="@+id/btnAdd"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                class="net.eazyhealth.id.app.custom.CustomRippleView"
+                android:gravity="center_vertical">
+                <view
+                    style="@style/text_view_big_white"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    class="net.eazyhealth.id.app.custom.CustomTextView"
+                    android:paddingLeft="35dp"
+                    android:paddingRight="35dp"
+                    android:background="@drawable/btn_green"
+                    android:text="Add"
+                    android:gravity="center"/>
+            </view>
+        </LinearLayout>
+    </LinearLayout>
+</FrameLayout>

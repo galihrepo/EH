@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 23
-    buildToolsVersion '23.0.0'
+    buildToolsVersion '23.0.2'
 
     defaultConfig {
         applicationId "net.eazyhealth.id.app"
@@ -18,9 +18,9 @@ android {
             zipAlignEnabled true
         }
         debug {
-            minifyEnabled true
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            zipAlignEnabled true
+//            minifyEnabled true
+//            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+//            zipAlignEnabled true
         }
     }
 }
@@ -64,4 +64,7 @@ dependencies {
 
     // toast
     compile 'net.steamcrafted:load-toast:1.0.10'
+
+    // circle textview
+    compile 'com.github.thinkcool:circletextimageview:1.0.20151218'
 }

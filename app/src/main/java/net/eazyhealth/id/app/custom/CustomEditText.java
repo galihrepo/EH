@@ -13,7 +13,7 @@ import net.eazyhealth.id.app.R;
  * Created by GALIH ADITYO on 3/22/2016.
  */
 public class CustomEditText extends EditText {
-    public static final String TYPEFACE_NAME = "lucida.ttf";
+    public static final String TYPEFACE_NAME = "DroidSans.ttf";
 
     public CustomEditText(Context context) {
         super(context);

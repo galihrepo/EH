@@ -44,8 +44,14 @@ public class ListDataActivity extends CustomAppCompatActivity {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             appBarLayout.setElevation(0);
         }
+        toolbar();
+        placeholder = (FrameLayout) findViewById(R.id.placeholder);
+    }
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+    private void toolbar() {
+        View include = findViewById(R.id.include_toolbar);
+
+        Toolbar toolbar = (Toolbar) include.findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
@@ -58,9 +64,7 @@ public class ListDataActivity extends CustomAppCompatActivity {
             }
         });
 
-        CustomTextView tvTitle = (CustomTextView) findViewById(R.id.title_tv);
+        CustomTextView tvTitle = (CustomTextView) include.findViewById(R.id.title_tv);
         tvTitle.setText(strTitle);
-
-        placeholder = (FrameLayout) findViewById(R.id.placeholder);
     }
 }

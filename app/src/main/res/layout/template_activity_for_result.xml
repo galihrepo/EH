@@ -10,23 +10,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:theme="@style/AppTheme.AppBarOverlay">
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
+        <include
+            android:id="@+id/include_toolbar"
+            layout="@layout/template_toolbar"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:popupTheme="@style/AppTheme.PopupOverlay">
-                <view
-                    android:id="@+id/title_tv"
-                    style="@style/text_view_big_white"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    class="net.eazyhealth.id.app.custom.CustomTextView"
-                    android:text="PASIEN"
-                    android:singleLine="true"
-                    android:ellipsize="end"/>
-        </android.support.v7.widget.Toolbar>
+            android:layout_height="match_parent" />
     </android.support.design.widget.AppBarLayout>
     <FrameLayout
         android:id="@+id/placeholder"
