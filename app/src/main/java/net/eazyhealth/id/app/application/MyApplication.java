@@ -6,6 +6,7 @@ import com.backendless.Backendless;
 import com.backendless.BackendlessUser;
 import com.backendless.persistence.BackendlessDataQuery;
 
+import net.danlew.android.joda.JodaTimeAndroid;
 import net.eazyhealth.id.app.rest.EndPoints;
 import net.eazyhealth.id.app.rest.ServiceAddress;
 
@@ -37,6 +38,7 @@ public class MyApplication extends Application {
         super.onCreate();
         mInstance = this;
 
+        JodaTimeAndroid.init(this);
         Backendless.initApp(this, BL_APP_ID, BL_ANDROID_SECRET_KEY, BL_APP_VERSION);
     }
 

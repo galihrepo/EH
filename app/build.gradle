@@ -18,9 +18,9 @@ android {
             zipAlignEnabled true
         }
         debug {
-//            minifyEnabled true
-//            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-//            zipAlignEnabled true
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            zipAlignEnabled true
         }
     }
 }
@@ -67,4 +67,7 @@ dependencies {
 
     // circle textview
     compile 'com.github.thinkcool:circletextimageview:1.0.20151218'
+
+    // date picker
+    compile 'com.prolificinteractive:material-calendarview:1.2.0'
 }

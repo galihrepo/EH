@@ -3,11 +3,15 @@ package net.eazyhealth.id.app.activity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.RelativeLayout;
+
+import com.thinkcool.circletextimageview.CircleTextImageView;
 
 import net.eazyhealth.id.app.R;
 import net.eazyhealth.id.app.custom.CustomAppCompatActivity;
 import net.eazyhealth.id.app.custom.CustomTextView;
 import net.eazyhealth.id.app.fragment.FragmentItemDetail;
+import net.eazyhealth.id.app.helper.WidgetHelper;
 
 public class DetailTemplateActivity extends CustomAppCompatActivity {
 
@@ -32,7 +36,13 @@ public class DetailTemplateActivity extends CustomAppCompatActivity {
     }
 
     private void initView() {
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        tvTitle = (CustomTextView) findViewById(R.id.title_tv);
+        includeView();
+    }
+
+    private void includeView() {
+        View includeToolbar = findViewById(R.id.include_toolbar);
+        Toolbar toolbar = (Toolbar) includeToolbar.findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
@@ -44,7 +54,13 @@ public class DetailTemplateActivity extends CustomAppCompatActivity {
             }
         });
 
-        tvTitle = (CustomTextView) findViewById(R.id.title_tv);
+        notificationShoppingCart(includeToolbar);
+    }
+
+    private void notificationShoppingCart(View templateToolbar) {
+        RelativeLayout shoppingCartButton = (RelativeLayout) templateToolbar.findViewById(R.id.shopping_cart);
+        CircleTextImageView notificationNumber = (CircleTextImageView) templateToolbar.findViewById(R.id.notification_number);
+        WidgetHelper.setNotificationNumber(this, notificationNumber, shoppingCartButton);
     }
 
     @Override

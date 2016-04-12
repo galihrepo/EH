@@ -23,25 +23,36 @@
                 android:layout_weight="1"
                 class="net.eazyhealth.id.app.custom.CustomTextView"
                 android:text="PASIEN"/>
-            <FrameLayout
+            <RelativeLayout
+                android:id="@+id/shopping_cart"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:padding="@dimen/padding_notification"
-                android:layout_marginRight="10dp">
-                <ImageView
+                android:layout_height="?attr/actionBarSize"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:background="@drawable/btn_green">
+                <FrameLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/icon_buy"/>
-                <com.thinkcool.circletextimageview.CircleTextImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:citv_text_color="@android:color/white"
-                    app:citv_text_text="1"
-                    app:citv_text_size="12sp"
-                    app:citv_text_padding="5dp"
-                    app:citv_fill_color="@color/red_0" />
-            </FrameLayout>
+                    android:orientation="horizontal"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true">
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/icon_buy"
+                        />
+                    <com.thinkcool.circletextimageview.CircleTextImageView
+                        android:id="@+id/notification_number"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:citv_text_color="@android:color/white"
+                        app:citv_text_text="1"
+                        app:citv_text_size="12sp"
+                        app:citv_text_padding="5dp"
+                        app:citv_fill_color="@color/red_0"/>
+                </FrameLayout>
+            </RelativeLayout>
+
         </LinearLayout>
     </android.support.v7.widget.Toolbar>
 </LinearLayout>

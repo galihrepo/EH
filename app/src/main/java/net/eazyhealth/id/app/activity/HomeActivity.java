@@ -11,6 +11,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.RelativeLayout;
+
+import com.thinkcool.circletextimageview.CircleTextImageView;
 
 import net.eazyhealth.id.app.R;
 import net.eazyhealth.id.app.custom.CustomAppCompatActivity;
@@ -19,8 +22,13 @@ import net.eazyhealth.id.app.fragment.FragmentDashboard;
 import net.eazyhealth.id.app.fragment.FragmentLogin;
 import net.eazyhealth.id.app.fragment.patients.FragmentPatientsProfile;
 import net.eazyhealth.id.app.fragment.patients.FragmentPatientsSchedule;
+import net.eazyhealth.id.app.helper.TinyDB;
+import net.eazyhealth.id.app.helper.WidgetHelper;
 import net.eazyhealth.id.app.interfaces.OnDialogTemplateTwoButton;
+import net.eazyhealth.id.app.model.MedicalChoosen;
 import net.eazyhealth.id.app.preferences.AccountPreferences;
+
+import java.util.ArrayList;
 
 public class HomeActivity extends CustomAppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -69,7 +77,15 @@ public class HomeActivity extends CustomAppCompatActivity implements NavigationV
         toolbar.setTitle("");
         setSupportActionBar(toolbar);
 
+        notificationShoppingCart(templateToolbar);
+
         placeholder = (FrameLayout) insideInclude.findViewById(R.id.placeholder);
+    }
+
+    private void notificationShoppingCart(View templateToolbar) {
+        RelativeLayout shoppingCartButton = (RelativeLayout) templateToolbar.findViewById(R.id.shopping_cart);
+        CircleTextImageView notificationNumber = (CircleTextImageView) templateToolbar.findViewById(R.id.notification_number);
+        WidgetHelper.setNotificationNumber(this, notificationNumber, shoppingCartButton);
     }
 
     @Override

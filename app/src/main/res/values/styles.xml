@@ -145,8 +145,6 @@
         <item name="android:textColor">@color/red_0</item>
     </style>
 
-
-
     <style name="slider_indicator" parent="AndroidImageSlider_Corner_Oval_Orange">
         <item name="selected_color">@color/colorPrimary</item>
         <item name="unselected_color">@android:color/white</item>

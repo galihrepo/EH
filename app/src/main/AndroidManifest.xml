@@ -49,9 +49,11 @@
             android:name=".activity.DetailTemplateActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".activity.ListDataActivity"
+        <activity
+            android:name=".activity.ListDataActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".activity.DatePickerActivity"></activity>
     </application>
 
 </manifest>
