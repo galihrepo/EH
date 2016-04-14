@@ -22,13 +22,9 @@ import net.eazyhealth.id.app.fragment.FragmentDashboard;
 import net.eazyhealth.id.app.fragment.FragmentLogin;
 import net.eazyhealth.id.app.fragment.patients.FragmentPatientsProfile;
 import net.eazyhealth.id.app.fragment.patients.FragmentPatientsSchedule;
-import net.eazyhealth.id.app.helper.TinyDB;
 import net.eazyhealth.id.app.helper.WidgetHelper;
 import net.eazyhealth.id.app.interfaces.OnDialogTemplateTwoButton;
-import net.eazyhealth.id.app.model.MedicalChoosen;
 import net.eazyhealth.id.app.preferences.AccountPreferences;
-
-import java.util.ArrayList;
 
 public class HomeActivity extends CustomAppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -36,10 +32,12 @@ public class HomeActivity extends CustomAppCompatActivity implements NavigationV
     private AccountPreferences accountPreferences;
     private NavigationView navigationView;
     private Toolbar toolbar;
+    private View templateToolbar;
 
     @Override
     protected void onResume() {
         super.onResume();
+        notificationShoppingCart(templateToolbar);
     }
 
     @Override
@@ -71,13 +69,11 @@ public class HomeActivity extends CustomAppCompatActivity implements NavigationV
     private void includeView() {
         View include = findViewById(R.id.include);
         View insideInclude = include.findViewById(R.id.include);
-        View templateToolbar = include.findViewById(R.id.include_toolbar);
+        templateToolbar = include.findViewById(R.id.include_toolbar);
 
         toolbar = (Toolbar) templateToolbar.findViewById(R.id.toolbar);
         toolbar.setTitle("");
         setSupportActionBar(toolbar);
-
-        notificationShoppingCart(templateToolbar);
 
         placeholder = (FrameLayout) insideInclude.findViewById(R.id.placeholder);
     }

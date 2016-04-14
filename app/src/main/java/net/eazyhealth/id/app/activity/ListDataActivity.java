@@ -19,10 +19,18 @@ import net.eazyhealth.id.app.helper.WidgetHelper;
 public class ListDataActivity extends CustomAppCompatActivity {
 
     public static final String BUNDLE_TITLE = ListDataActivity.class.getSimpleName() + "title";
-
+    public static int RC_DATE_TIME_DIALOG = 1;
     private FrameLayout placeholder;
-
     private String strTitle = "";
+    private View include;
+    private RelativeLayout shoppingCartButton;
+    private CircleTextImageView notificationNumber;
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        notificationShoppingCart();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +61,7 @@ public class ListDataActivity extends CustomAppCompatActivity {
     }
 
     private void toolbar() {
-        View include = findViewById(R.id.include_toolbar);
+        include = findViewById(R.id.include_toolbar);
 
         Toolbar toolbar = (Toolbar) include.findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -68,15 +76,14 @@ public class ListDataActivity extends CustomAppCompatActivity {
             }
         });
 
-        notificationShoppingCart(include);
+        shoppingCartButton = (RelativeLayout) include.findViewById(R.id.shopping_cart);
+        notificationNumber = (CircleTextImageView) include.findViewById(R.id.notification_number);
 
         CustomTextView tvTitle = (CustomTextView) include.findViewById(R.id.title_tv);
         tvTitle.setText(strTitle);
     }
 
-    private void notificationShoppingCart(View templateToolbar) {
-        RelativeLayout shoppingCartButton = (RelativeLayout) templateToolbar.findViewById(R.id.shopping_cart);
-        CircleTextImageView notificationNumber = (CircleTextImageView) templateToolbar.findViewById(R.id.notification_number);
+    public void notificationShoppingCart() {
         WidgetHelper.setNotificationNumber(this, notificationNumber, shoppingCartButton);
     }
 }

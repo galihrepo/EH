@@ -15,6 +15,13 @@ import android.widget.CompoundButton;
 import net.eazyhealth.id.app.R;
 import net.eazyhealth.id.app.custom.CustomRadioButton;
 import net.eazyhealth.id.app.custom.CustomRadioGroup;
+import net.eazyhealth.id.app.custom.CustomTextView;
+import net.eazyhealth.id.app.custom.CustomToast;
+import net.eazyhealth.id.app.helper.TinyDB;
+import net.eazyhealth.id.app.interfaces.OnDialogTemplateTwoButton;
+import net.eazyhealth.id.app.model.response.backendless.Mcu;
+
+import java.util.ArrayList;
 
 /**
  * Created by GALIH ADITYO on 4/14/2016.
@@ -25,6 +32,10 @@ public class DialogFragmentScheduleDateTime extends DialogFragment {
     private SparseArray<String> listTime = new SparseArray<>();
     private Integer idDateSelected = null;
     private Integer idTimeSelected = null;
+    private CustomRadioGroup groupRadioDate;
+    private CustomRadioGroup groupRadioTime;
+    private Mcu mcu;
+    private OnDialogTemplateTwoButton listener;
 
     @NonNull
     @Override
@@ -40,8 +51,10 @@ public class DialogFragmentScheduleDateTime extends DialogFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.dialog_fragment_schedule_date_time, container, false);
-        initData();
         initView(rootView);
+        initData();
+        addViewDate();
+        addViewTime();
         return rootView;
     }
 
@@ -68,16 +81,51 @@ public class DialogFragmentScheduleDateTime extends DialogFragment {
     }
 
     private void initView(View rootView) {
-        addViewDate(rootView);
-        addViewTime(rootView);
+        groupRadioDate = (CustomRadioGroup) rootView.findViewById(R.id.rg_date);
+        groupRadioTime = (CustomRadioGroup) rootView.findViewById(R.id.rg_time);
+
+        CustomTextView btnCancel = (CustomTextView) rootView.findViewById(R.id.cancel_btn);
+        btnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dismiss();
+            }
+        });
+
+        CustomTextView btnOk = (CustomTextView) rootView.findViewById(R.id.ok_btn);
+        btnOk.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (idDateSelected == null) {
+                    CustomToast.setMessage(getActivity(), getString(R.string.please_choose_date));
+                    return;
+                }
+
+                if (idTimeSelected == null) {
+                    CustomToast.setMessage(getActivity(), getString(R.string.please_choose_time));
+                    return;
+                }
+
+                if (mcu == null) {
+                    CustomToast.setMessage(getActivity(), getString(R.string.medical_not_valid));
+                    return;
+                }
+
+                TinyDB tinyDB = new TinyDB(getActivity());
+                ArrayList<Object> list = tinyDB.getListObject(TinyDB.MEDICAL_CHOOSEN, Mcu.class);
+                list.add(mcu);
+                tinyDB.putListObject(TinyDB.MEDICAL_CHOOSEN, list);
+                dismiss();
+                listener.onTemplateDialogYes();
+            }
+        });
     }
 
-    private void addViewDate(View rootView) {
+    private void addViewDate() {
         final SparseArray<CustomRadioButton> listRadio = new SparseArray<>();
-        CustomRadioGroup group = (CustomRadioGroup) rootView.findViewById(R.id.rg_date);
         LayoutInflater inflater = LayoutInflater.from(getActivity());
         for (int i = 0; i < listDate.size(); i++) {
-            View view = inflater.inflate(R.layout.item_radio_button, group, false);
+            View view = inflater.inflate(R.layout.item_radio_button, groupRadioDate, false);
             final CustomRadioButton radioButton = (CustomRadioButton) view.findViewById(R.id.rb);
             listRadio.put(i, radioButton);
             radioButton.setText(listDate.get(i));
@@ -98,16 +146,15 @@ public class DialogFragmentScheduleDateTime extends DialogFragment {
                 }
             });
 
-            group.addView(view);
+            groupRadioDate.addView(view);
         }
     }
 
-    private void addViewTime(View rootView) {
+    private void addViewTime() {
         final SparseArray<CustomRadioButton> listRadio = new SparseArray<>();
-        CustomRadioGroup group = (CustomRadioGroup) rootView.findViewById(R.id.rg_time);
         LayoutInflater inflater = LayoutInflater.from(getActivity());
         for (int i = 0; i < listTime.size(); i++) {
-            View view = inflater.inflate(R.layout.item_radio_button, group, false);
+            View view = inflater.inflate(R.layout.item_radio_button, groupRadioTime, false);
             final CustomRadioButton radioButton = (CustomRadioButton) view.findViewById(R.id.rb);
             listRadio.put(i, radioButton);
             radioButton.setText(listTime.get(i));
@@ -127,7 +174,15 @@ public class DialogFragmentScheduleDateTime extends DialogFragment {
                     }
                 }
             });
-            group.addView(view);
+            groupRadioTime.addView(view);
         }
+    }
+
+    public void setMcu(Mcu mcu) {
+        this.mcu = mcu;
+    }
+
+    public void setListener(OnDialogTemplateTwoButton listener) {
+        this.listener = listener;
     }
 }

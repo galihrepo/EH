@@ -21,4 +21,7 @@
     <string name="filter">Filter</string>
     <string name="submit">Submit</string>
     <string name="mcu">Medical Check Up</string>
+    <string name="medical_not_valid">Medical data not valid</string>
+    <string name="please_choose_date">Please choose date</string>
+    <string name="please_choose_time">Please choose time</string>
 </resources>

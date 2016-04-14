@@ -55,27 +55,25 @@
         android:orientation="horizontal">
         <view
             android:id="@+id/cancel_btn"
+            style="@style/text_view_normal_grey"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:padding="10dp"
-            class="net.eazyhealth.id.app.custom.CustomButton"
+            class="net.eazyhealth.id.app.custom.CustomTextView"
             android:background="@drawable/btn_option"
             android:gravity="center"
-            android:text="@string/cancel"
-            android:textSize="@dimen/size_textview_normal"
-            android:textColor="@color/text_secondary_dark"/>
+            android:text="@string/cancel" />
         <view
             android:id="@+id/ok_btn"
+            style="@style/text_view_normal_grey"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:padding="10dp"
-            class="net.eazyhealth.id.app.custom.CustomButton"
+            class="net.eazyhealth.id.app.custom.CustomTextView"
             android:background="@drawable/btn_option"
             android:gravity="center"
-            android:text="Submit"
-            android:textSize="@dimen/size_textview_normal"
-            android:textColor="@color/text_secondary_dark"/>
+            android:text="Submit" />
     </LinearLayout>
 </LinearLayout>

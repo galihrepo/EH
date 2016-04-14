@@ -16,6 +16,7 @@ import net.eazyhealth.id.app.helper.WidgetHelper;
 public class DetailTemplateActivity extends CustomAppCompatActivity {
 
     private CustomTextView tvTitle;
+    private View includeToolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +42,7 @@ public class DetailTemplateActivity extends CustomAppCompatActivity {
     }
 
     private void includeView() {
-        View includeToolbar = findViewById(R.id.include_toolbar);
+        includeToolbar = findViewById(R.id.include_toolbar);
         Toolbar toolbar = (Toolbar) includeToolbar.findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -53,8 +54,6 @@ public class DetailTemplateActivity extends CustomAppCompatActivity {
                 backToHome();
             }
         });
-
-        notificationShoppingCart(includeToolbar);
     }
 
     private void notificationShoppingCart(View templateToolbar) {
@@ -75,5 +74,11 @@ public class DetailTemplateActivity extends CustomAppCompatActivity {
 
         setResult(RESULT_OK);
         finish();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        notificationShoppingCart(includeToolbar);
     }
 }
