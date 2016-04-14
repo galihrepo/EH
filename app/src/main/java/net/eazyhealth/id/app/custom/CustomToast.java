@@ -11,18 +11,26 @@ import android.widget.Toast;
  */
 public class CustomToast {
     public static void setMessage(Context context, String message) {
-        Toast.makeText(context, message, Toast.LENGTH_LONG).show();
+        try {
+            Toast.makeText(context, message, Toast.LENGTH_LONG).show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public static void showSnackbar(View coordinatorLayoutView, String alert) {
-        final Snackbar snackbar = Snackbar.make(coordinatorLayoutView, alert, Snackbar.LENGTH_LONG);
-        snackbar.setActionTextColor(Color.WHITE);
-        snackbar.setAction("Close", new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                snackbar.dismiss();
-            }
-        });
-        snackbar.show();
+        try {
+            final Snackbar snackbar = Snackbar.make(coordinatorLayoutView, alert, Snackbar.LENGTH_LONG);
+            snackbar.setActionTextColor(Color.WHITE);
+            snackbar.setAction("Close", new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    snackbar.dismiss();
+                }
+            });
+            snackbar.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
