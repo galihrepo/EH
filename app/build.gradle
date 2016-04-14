@@ -67,7 +67,4 @@ dependencies {
 
     // circle textview
     compile 'com.github.thinkcool:circletextimageview:1.0.20151218'
-
-    // date picker
-    compile 'com.prolificinteractive:material-calendarview:1.2.0'
 }

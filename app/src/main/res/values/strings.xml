@@ -19,5 +19,6 @@
     <string name="title">Title</string>
     <string name="sorting">Sorting</string>
     <string name="filter">Filter</string>
+    <string name="submit">Submit</string>
     <string name="mcu">Medical Check Up</string>
 </resources>

@@ -5,23 +5,19 @@ import android.app.ActivityOptions;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
 
 import net.eazyhealth.id.app.R;
 import net.eazyhealth.id.app.activity.DetailTemplateActivity;
-import net.eazyhealth.id.app.custom.CustomRippleView;
 import net.eazyhealth.id.app.custom.CustomTextView;
-import net.eazyhealth.id.app.custom.CustomToast;
-import net.eazyhealth.id.app.custom.RippleViewAndroidM;
-import net.eazyhealth.id.app.model.Datum;
+import net.eazyhealth.id.app.dialog.DialogFragmentScheduleDateTime;
 import net.eazyhealth.id.app.model.response.backendless.Mcu;
-import net.eazyhealth.id.app.model.response.mcu.DatumMcu;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -40,9 +36,12 @@ public class AdapterItemLoadMore extends RecyclerView.Adapter<RecyclerView.ViewH
     private int lastVisibleItem, totalItemCount;
     private boolean loading;
     private OnLoadMoreListener onLoadMoreListener;
+    private DialogFragmentScheduleDateTime dialogAddSchedule;
 
     public AdapterItemLoadMore(Context context, List<Mcu> myDataSet, RecyclerView recyclerView) {
         this.context = context;
+        dialogAddSchedule = new DialogFragmentScheduleDateTime();
+
         if (myDataSet == null) {
             mDataset = new LinkedList<>();
         } else {
@@ -132,13 +131,8 @@ public class AdapterItemLoadMore extends RecyclerView.Adapter<RecyclerView.ViewH
             ((TextViewHolder) holder).btnAdd.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent i = new Intent(context.getApplicationContext(), DetailTemplateActivity.class);
-                    i.putExtra("title", "Detail Schedule");
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                        ((Activity) context).startActivityForResult(i, 0, ActivityOptions.makeSceneTransitionAnimation((Activity) context).toBundle());
-                    } else {
-                        ((Activity) context).startActivityForResult(i, 0);
-                    }
+                    if (!dialogAddSchedule.isVisible())
+                        dialogAddSchedule.show(((FragmentActivity) context).getSupportFragmentManager(),"");
                 }
             });
             ((TextViewHolder) holder).btnDetail.setOnClickListener(new View.OnClickListener() {

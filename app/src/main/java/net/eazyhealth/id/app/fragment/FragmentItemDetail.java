@@ -1,28 +1,16 @@
 package net.eazyhealth.id.app.fragment;
 
-import android.app.DatePickerDialog;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.DatePicker;
 
-import com.orhanobut.dialogplus.DialogPlus;
-import com.orhanobut.dialogplus.OnItemClickListener;
-
-import net.danlew.android.joda.DateUtils;
 import net.eazyhealth.id.app.R;
-import net.eazyhealth.id.app.activity.DatePickerActivity;
 import net.eazyhealth.id.app.custom.CustomRippleView;
-import net.eazyhealth.id.app.custom.CustomToast;
 import net.eazyhealth.id.app.custom.RippleViewAndroidM;
-
-import org.joda.time.DateTime;
+import net.eazyhealth.id.app.dialog.DialogFragmentScheduleDateTime;
 
 /**
  * Created by GALIH ADITYO on 4/9/2016.
@@ -31,11 +19,13 @@ public class FragmentItemDetail extends Fragment implements RippleViewAndroidM.O
 
     private CustomRippleView btnAdd;
     private final int ADD_ONE_DAY = 1;
+    private DialogFragmentScheduleDateTime dialog;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_item_detail, container, false);
+        dialog = new DialogFragmentScheduleDateTime();
         initView(view);
         return view;
     }
@@ -66,7 +56,12 @@ public class FragmentItemDetail extends Fragment implements RippleViewAndroidM.O
 //                    .create();
 //            dialog.show();
 
-            startActivityForResult(new Intent(getActivity(), DatePickerActivity.class), 0);
+//            startActivityForResult(new Intent(getActivity(), DatePickerActivity.class), 0);
+
+
+
+            if (!dialog.isVisible())
+                dialog.show(getFragmentManager(), "");
         }
     }
 }
