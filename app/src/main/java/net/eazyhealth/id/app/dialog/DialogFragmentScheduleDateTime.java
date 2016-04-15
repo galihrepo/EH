@@ -13,15 +13,16 @@ import android.view.Window;
 import android.widget.CompoundButton;
 
 import net.eazyhealth.id.app.R;
+import net.eazyhealth.id.app.application.MyApplication;
 import net.eazyhealth.id.app.custom.CustomRadioButton;
 import net.eazyhealth.id.app.custom.CustomRadioGroup;
 import net.eazyhealth.id.app.custom.CustomTextView;
 import net.eazyhealth.id.app.custom.CustomToast;
-import net.eazyhealth.id.app.helper.TinyDB;
 import net.eazyhealth.id.app.interfaces.OnDialogTemplateTwoButton;
 import net.eazyhealth.id.app.model.response.backendless.Mcu;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by GALIH ADITYO on 4/14/2016.
@@ -111,12 +112,17 @@ public class DialogFragmentScheduleDateTime extends DialogFragment {
                     return;
                 }
 
-                TinyDB tinyDB = new TinyDB(getActivity());
-                ArrayList<Object> list = tinyDB.getListObject(TinyDB.MEDICAL_CHOOSEN, Mcu.class);
+                List<Mcu> list;
+                if (MyApplication.getInstance().getDataPreferences().getMedicalChoosen() == null) {
+                    list = new ArrayList<Mcu>();
+                } else {
+                    list = MyApplication.getInstance().getDataPreferences().getMedicalChoosen();
+                }
                 list.add(mcu);
-                tinyDB.putListObject(TinyDB.MEDICAL_CHOOSEN, list);
-                dismiss();
+                MyApplication.getInstance().getDataPreferences().setMedicalChoosen(list);
+
                 listener.onTemplateDialogYes();
+                dismiss();
             }
         });
     }

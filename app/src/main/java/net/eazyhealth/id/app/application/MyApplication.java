@@ -3,11 +3,9 @@ package net.eazyhealth.id.app.application;
 import android.app.Application;
 
 import com.backendless.Backendless;
-import com.backendless.BackendlessUser;
-import com.backendless.persistence.BackendlessDataQuery;
 
 import net.danlew.android.joda.JodaTimeAndroid;
-import net.eazyhealth.id.app.rest.EndPoints;
+import net.eazyhealth.id.app.preferences.DataPreferences;
 import net.eazyhealth.id.app.rest.ServiceAddress;
 
 import java.io.IOException;
@@ -32,11 +30,14 @@ public class MyApplication extends Application {
 
     private static MyApplication mInstance;
     private Retrofit retrofit;
+    private DataPreferences dataPreferences;
 
     @Override
     public void onCreate() {
         super.onCreate();
         mInstance = this;
+
+        dataPreferences = new DataPreferences(getApplicationContext());
 
         JodaTimeAndroid.init(this);
         Backendless.initApp(this, BL_APP_ID, BL_ANDROID_SECRET_KEY, BL_APP_VERSION);
@@ -76,5 +77,13 @@ public class MyApplication extends Application {
         }
 
         return retrofit;
+    }
+
+    public DataPreferences getDataPreferences() {
+        if (dataPreferences == null) {
+            dataPreferences = new DataPreferences(getApplicationContext());
+        }
+
+        return dataPreferences;
     }
 }

@@ -18,7 +18,6 @@ import net.eazyhealth.id.app.activity.DetailTemplateActivity;
 import net.eazyhealth.id.app.activity.ListDataActivity;
 import net.eazyhealth.id.app.custom.CustomTextView;
 import net.eazyhealth.id.app.dialog.DialogFragmentScheduleDateTime;
-import net.eazyhealth.id.app.helper.TinyDB;
 import net.eazyhealth.id.app.interfaces.OnDialogTemplateTwoButton;
 import net.eazyhealth.id.app.model.response.backendless.Mcu;
 
@@ -40,14 +39,13 @@ public class AdapterItemLoadMore extends RecyclerView.Adapter<RecyclerView.ViewH
     private boolean loading;
     private OnLoadMoreListener onLoadMoreListener;
     private DialogFragmentScheduleDateTime dialogAddSchedule;
-
-    private TinyDB tinyDB;
+    private RecyclerView recyclerView;
 
     public AdapterItemLoadMore(Context context, List<Mcu> myDataSet, RecyclerView recyclerView) {
         this.context = context;
+        this.recyclerView = recyclerView;
 
         dialogAddSchedule = new DialogFragmentScheduleDateTime();
-        tinyDB = new TinyDB(context);
 
         if (myDataSet == null) {
             mDataset = new LinkedList<>();
@@ -150,8 +148,6 @@ public class AdapterItemLoadMore extends RecyclerView.Adapter<RecyclerView.ViewH
                             @Override
                             public void onTemplateDialogYes() {
                                 ((ListDataActivity) context).notificationShoppingCart();
-
-
                             }
                         });
                         dialogAddSchedule.show(((FragmentActivity) context).getSupportFragmentManager(), "");
@@ -171,30 +167,6 @@ public class AdapterItemLoadMore extends RecyclerView.Adapter<RecyclerView.ViewH
                     }
                 }
             });
-
-            ((TextViewHolder) holder).btnDelete.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-                }
-            });
-
-            if (tinyDB.getListObject(TinyDB.MEDICAL_CHOOSEN, Mcu.class).contains(data)) {
-                ((TextViewHolder) holder).btnDelete.setVisibility(View.VISIBLE);
-
-                ((TextViewHolder) holder).btnAdd.setVisibility(View.GONE);
-                ((TextViewHolder) holder).btnDetail.setVisibility(View.GONE);
-            } else {
-                ((TextViewHolder) holder).btnDelete.setVisibility(View.GONE);
-
-                ((TextViewHolder) holder).btnAdd.setVisibility(View.VISIBLE);
-                ((TextViewHolder) holder).btnDetail.setVisibility(View.VISIBLE);
-            }
-
-            ((TextViewHolder) holder).btnDelete.invalidate();
-            ((TextViewHolder) holder).btnAdd.invalidate();
-            ((TextViewHolder) holder).btnDetail.invalidate();
-
         } else {
             ((ProgressViewHolder) holder).progressBar.setIndeterminate(true);
         }
@@ -224,12 +196,10 @@ public class AdapterItemLoadMore extends RecyclerView.Adapter<RecyclerView.ViewH
         public CustomTextView tvDate;
         public CustomTextView btnAdd;
         public CustomTextView btnDetail;
-        public CustomTextView btnDelete;
 
         public TextViewHolder(View v) {
             super(v);
 
-            btnDelete = (CustomTextView) v.findViewById(R.id.btnDelete);
             btnAdd = (CustomTextView) v.findViewById(R.id.btnAdd);
             btnDetail = (CustomTextView) v.findViewById(R.id.btnDetail);
             tvClinic = (CustomTextView) v.findViewById(R.id.clinic);

@@ -24,12 +24,12 @@ import net.eazyhealth.id.app.fragment.patients.FragmentPatientsProfile;
 import net.eazyhealth.id.app.fragment.patients.FragmentPatientsSchedule;
 import net.eazyhealth.id.app.helper.WidgetHelper;
 import net.eazyhealth.id.app.interfaces.OnDialogTemplateTwoButton;
-import net.eazyhealth.id.app.preferences.AccountPreferences;
+import net.eazyhealth.id.app.preferences.DataPreferences;
 
 public class HomeActivity extends CustomAppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private FrameLayout placeholder;
-    private AccountPreferences accountPreferences;
+    private DataPreferences dataPreferences;
     private NavigationView navigationView;
     private Toolbar toolbar;
     private View templateToolbar;
@@ -45,7 +45,7 @@ public class HomeActivity extends CustomAppCompatActivity implements NavigationV
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        accountPreferences = new AccountPreferences(this);
+        dataPreferences = new DataPreferences(this);
 
         includeView();
 
@@ -58,7 +58,7 @@ public class HomeActivity extends CustomAppCompatActivity implements NavigationV
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        if (accountPreferences.getUsername() == null) {
+        if (dataPreferences.getUsername() == null) {
             navigationView.inflateMenu(R.menu.sidemenu);
         } else {
             navigationView.inflateMenu(R.menu.sidemenu_patients);
@@ -96,7 +96,7 @@ public class HomeActivity extends CustomAppCompatActivity implements NavigationV
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        if (accountPreferences.getPassword() != null) {
+        if (dataPreferences.getPassword() != null) {
             getMenuInflater().inflate(R.menu.home_patients, menu);
             SearchView searchView =
                     (SearchView) menu.findItem(R.id.search).getActionView();
@@ -150,8 +150,8 @@ public class HomeActivity extends CustomAppCompatActivity implements NavigationV
 
                 @Override
                 public void onTemplateDialogYes() {
-                    accountPreferences.setUsername(null);
-                    accountPreferences.setPassword(null);
+                    dataPreferences.setUsername(null);
+                    dataPreferences.setPassword(null);
                     dialog.dismiss();
                     recreate();
 //                    finish();

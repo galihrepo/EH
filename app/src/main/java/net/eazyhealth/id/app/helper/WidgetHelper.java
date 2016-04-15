@@ -6,9 +6,9 @@ import android.widget.ArrayAdapter;
 
 import com.thinkcool.circletextimageview.CircleTextImageView;
 
+import net.eazyhealth.id.app.application.MyApplication;
 import net.eazyhealth.id.app.custom.CustomAutoCompleteTextView;
 import net.eazyhealth.id.app.custom.CustomToast;
-import net.eazyhealth.id.app.model.response.backendless.Mcu;
 
 import java.util.ArrayList;
 
@@ -33,15 +33,20 @@ public class WidgetHelper {
     }
 
     public static void setNotificationNumber(final Context context, CircleTextImageView circleTextImageView, View shoppingCartButton) {
-        TinyDB tinyDB = new TinyDB(context);
-        int len = tinyDB.getListObject(TinyDB.MEDICAL_CHOOSEN, Mcu.class).size();
-        if (len == 0) {
+        if (MyApplication.getInstance().getDataPreferences().getMedicalChoosen() == null) {
             circleTextImageView.setVisibility(View.GONE);
             circleTextImageView.setText(0 + "");
         } else {
-            circleTextImageView.setVisibility(View.VISIBLE);
-            circleTextImageView.setText(len + "");
+            int len = MyApplication.getInstance().getDataPreferences().getMedicalChoosen().size();
+            if (len == 0) {
+                circleTextImageView.setVisibility(View.GONE);
+                circleTextImageView.setText(0 + "");
+            } else {
+                circleTextImageView.setVisibility(View.VISIBLE);
+                circleTextImageView.setText(len + "");
+            }
         }
+
         circleTextImageView.invalidate();
 
         shoppingCartButton.setOnClickListener(new View.OnClickListener() {

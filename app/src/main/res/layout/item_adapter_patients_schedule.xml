@@ -64,20 +64,6 @@
                 android:background="@drawable/btn_grey"/>
 
             <view
-                android:id="@+id/btnDelete"
-                style="@style/text_view_normal_pink"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="@dimen/padding_button"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentEnd="true"
-                class="net.eazyhealth.id.app.custom.CustomTextView"
-                android:text="- Delete"
-                android:background="@drawable/btn_grey"
-                android:visibility="gone" />
-
-            <view
                 android:id="@+id/btnDetail"
                 style="@style/text_view_normal_blue"
                 android:layout_width="wrap_content"

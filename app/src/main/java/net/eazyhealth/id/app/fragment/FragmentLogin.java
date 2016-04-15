@@ -22,10 +22,7 @@ import net.eazyhealth.id.app.custom.CustomButton;
 import net.eazyhealth.id.app.custom.CustomCheckBox;
 import net.eazyhealth.id.app.custom.CustomEditText;
 import net.eazyhealth.id.app.custom.CustomToast;
-import net.eazyhealth.id.app.preferences.AccountPreferences;
 import net.steamcrafted.loadtoast.LoadToast;
-
-import java.util.logging.LogRecord;
 
 /**
  * Created by GALIH ADITYO on 3/29/2016.
@@ -72,7 +69,7 @@ public class FragmentLogin extends Fragment {
                     return;
                 }
 
-//                AccountPreferences accountPreferences = new AccountPreferences(getActivity());
+//                DataPreferences accountPreferences = new DataPreferences(getActivity());
 //                accountPreferences.setUsername(etUsername.getText().toString());
 //                accountPreferences.setPassword(etPassword.getText().toString());
 
