@@ -53,7 +53,8 @@
             android:name=".activity.ListDataActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".activity.DatePickerActivity"></activity>
+        <activity android:name=".activity.DatePickerActivity" />
+        <activity android:name=".activity.CartActivity"></activity>
     </application>
 
 </manifest>

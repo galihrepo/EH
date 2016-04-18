@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="net.eazyhealth.id.app.activity.CartActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <view
+            android:id="@+id/btnPayment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            class="net.eazyhealth.id.app.custom.CustomRippleView">
+
+            <view
+                style="@style/text_view_big_white"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                class="net.eazyhealth.id.app.custom.CustomTextView"
+                android:background="@drawable/btn_green"
+                android:text="@string/goto_payment"
+                android:paddingBottom="@dimen/padding_button"
+                android:paddingTop="@dimen/padding_button"
+                android:gravity="center" />
+        </view>
+    </LinearLayout>
+</FrameLayout>

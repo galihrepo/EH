@@ -1,14 +1,17 @@
 package net.eazyhealth.id.app.helper;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.View;
 import android.widget.ArrayAdapter;
 
 import com.thinkcool.circletextimageview.CircleTextImageView;
 
+import net.eazyhealth.id.app.activity.CartActivity;
+import net.eazyhealth.id.app.activity.RequestCode;
 import net.eazyhealth.id.app.application.MyApplication;
+import net.eazyhealth.id.app.custom.CustomAppCompatActivity;
 import net.eazyhealth.id.app.custom.CustomAutoCompleteTextView;
-import net.eazyhealth.id.app.custom.CustomToast;
 
 import java.util.ArrayList;
 
@@ -52,7 +55,8 @@ public class WidgetHelper {
         shoppingCartButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                CustomToast.setMessage(context, "tekan");
+                Intent i = new Intent(context, CartActivity.class);
+                ((CustomAppCompatActivity) context).startActivityForResult(i, RequestCode.CART_ACTIVITY);
             }
         });
     }
