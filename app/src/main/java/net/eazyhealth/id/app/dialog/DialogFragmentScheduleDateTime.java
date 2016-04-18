@@ -97,13 +97,12 @@ public class DialogFragmentScheduleDateTime extends DialogFragment {
         btnOk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (idDateSelected == null) {
-                    CustomToast.setMessage(getActivity(), getString(R.string.please_choose_date));
-                    return;
-                }
-
-                if (idTimeSelected == null) {
-                    CustomToast.setMessage(getActivity(), getString(R.string.please_choose_time));
+                if (idDateSelected == null || idTimeSelected == null) {
+                    if (idDateSelected == null) {
+                        CustomToast.setMessage(getActivity(), getString(R.string.please_choose_date));
+                    } else if (idTimeSelected == null) {
+                        CustomToast.setMessage(getActivity(), getString(R.string.please_choose_time));
+                    }
                     return;
                 }
 

@@ -1,15 +1,16 @@
 package net.eazyhealth.id.app.activity;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.RelativeLayout;
 
 import net.eazyhealth.id.app.R;
+import net.eazyhealth.id.app.custom.CustomAppCompatActivity;
 import net.eazyhealth.id.app.custom.CustomTextView;
+import net.eazyhealth.id.app.fragment.FragmentCart;
 
-public class CartActivity extends AppCompatActivity {
+public class CartActivity extends CustomAppCompatActivity {
 
     private View includeToolbar;
 
@@ -18,12 +19,17 @@ public class CartActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.template_activity_for_result);
         includeView();
+        initVariable();
+    }
+
+    private void initVariable() {
+        getSupportFragmentManager().beginTransaction().replace(R.id.placeholder, new FragmentCart()).commit();
     }
 
     private void includeView() {
         includeToolbar = findViewById(R.id.include_toolbar);
 
-        CustomTextView tvTitle = (CustomTextView) includeToolbar.findViewById(R.id.tv_title);
+        CustomTextView tvTitle = (CustomTextView) includeToolbar.findViewById(R.id.title_tv);
         tvTitle.setText(getString(R.string.cart_title));
 
         hideCart(includeToolbar);

@@ -11,6 +11,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 
 import net.eazyhealth.id.app.R;
@@ -194,13 +195,13 @@ public class AdapterItemLoadMore extends RecyclerView.Adapter<RecyclerView.ViewH
         public CustomTextView tvType;
         public CustomTextView tvPackage;
         public CustomTextView tvDate;
-        public CustomTextView btnAdd;
+        public LinearLayout btnAdd;
         public CustomTextView btnDetail;
 
         public TextViewHolder(View v) {
             super(v);
 
-            btnAdd = (CustomTextView) v.findViewById(R.id.btnAdd);
+            btnAdd = (LinearLayout) v.findViewById(R.id.btnAdd);
             btnDetail = (CustomTextView) v.findViewById(R.id.btnDetail);
             tvClinic = (CustomTextView) v.findViewById(R.id.clinic);
             tvType = (CustomTextView) v.findViewById(R.id.type);

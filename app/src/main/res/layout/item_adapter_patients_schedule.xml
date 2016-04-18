@@ -50,18 +50,46 @@
                 android:text="Selasa, 28 Maret 2016"
                 android:layout_below="@+id/package_medical"/>
 
-            <view
+            <!--<view-->
+            <!--android:id="@+id/btnAdd"-->
+            <!--style="@style/text_view_normal_pink"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:padding="@dimen/padding_button"-->
+            <!--android:layout_alignParentRight="true"-->
+            <!--android:layout_alignParentTop="true"-->
+            <!--android:layout_alignParentEnd="true"-->
+            <!--class="net.eazyhealth.id.app.custom.CustomTextView"-->
+            <!--android:text="+ Add"-->
+            <!--android:background="@drawable/btn_grey"/>-->
+            <LinearLayout
                 android:id="@+id/btnAdd"
-                style="@style/text_view_normal_pink"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/padding_button"
+                android:orientation="horizontal"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentEnd="true"
-                class="net.eazyhealth.id.app.custom.CustomTextView"
-                android:text="+ Add"
-                android:background="@drawable/btn_grey"/>
+                android:padding="10dp"
+                android:background="@drawable/btn_pink"
+                android:gravity="center">
+
+                <view
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    class="net.eazyhealth.id.app.custom.CustomImageView"
+                    android:src="@drawable/ic_add_cart" />
+
+                <view
+                    style="@style/text_view_normal_white"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    class="net.eazyhealth.id.app.custom.CustomTextView"
+                    android:text="Add"
+                    android:layout_below="@+id/package_medical"
+                    android:paddingLeft="10dp" />
+
+            </LinearLayout>
 
             <view
                 android:id="@+id/btnDetail"
