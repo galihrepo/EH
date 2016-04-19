@@ -155,7 +155,6 @@ public class AdapterItemLoadMore extends RecyclerView.Adapter<RecyclerView.ViewH
                     }
                 }
             });
-
             ((TextViewHolder) holder).btnDetail.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

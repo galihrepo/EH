@@ -24,6 +24,7 @@ public class FragmentCart extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_cart, container, false);
         initView(view);
+        refreshData();
         return view;
     }
 
@@ -31,8 +32,10 @@ public class FragmentCart extends Fragment {
         rv = (RecyclerView) view.findViewById(R.id.rv);
         rv.setHasFixedSize(true);
         rv.setLayoutManager(new LinearLayoutManager(getActivity()));
+    }
 
-        adapter = new AdapterCart(getActivity(), MyApplication.getInstance().getDataPreferences().getMedicalChoosen());
+    public void refreshData() {
+        adapter = new AdapterCart(getActivity(), MyApplication.getInstance().getDataPreferences().getMedicalChoosen(), this);
         rv.setAdapter(adapter);
     }
 }

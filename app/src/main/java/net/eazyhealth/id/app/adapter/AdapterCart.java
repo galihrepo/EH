@@ -7,8 +7,11 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import net.eazyhealth.id.app.R;
+import net.eazyhealth.id.app.activity.CartActivity;
+import net.eazyhealth.id.app.application.MyApplication;
 import net.eazyhealth.id.app.custom.CustomImageButton;
 import net.eazyhealth.id.app.custom.CustomTextView;
+import net.eazyhealth.id.app.fragment.FragmentCart;
 import net.eazyhealth.id.app.model.response.backendless.Mcu;
 
 import java.util.LinkedList;
@@ -22,13 +25,19 @@ public class AdapterCart extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private List<Mcu> mDataset;
     private Context context;
 
-    public AdapterCart(Context context, List<Mcu> myDataSet) {
+    private CartActivity parentActivity;
+    private FragmentCart parentFragment;
+
+    public AdapterCart(Context context, List<Mcu> myDataSet, FragmentCart fragmentCart) {
         this.context = context;
         if (myDataSet == null) {
             mDataset = new LinkedList<>();
         } else {
             mDataset = myDataSet;
         }
+
+        parentActivity = ((CartActivity) context);
+        parentFragment = fragmentCart;
     }
 
     public void clear() {
@@ -66,16 +75,19 @@ public class AdapterCart extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
         final Mcu data = mDataset.get(position);
         ((TextViewHolder) holder).tvClinic.setText(data.getProductName());
         ((TextViewHolder) holder).tvType.setText(data.getClinic().getName());
         ((TextViewHolder) holder).tvPackage.setText(data.getClinic().getAddress() + ", " + data.getClinic().getCity());
         ((TextViewHolder) holder).tvDate.setText(data.getPrice() + "");
-        ((TextViewHolder) holder).btnAdd.setOnClickListener(new View.OnClickListener() {
+        ((TextViewHolder) holder).btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                List<Mcu> list = MyApplication.getInstance().getDataPreferences().getMedicalChoosen();
+                list.remove(position);
+                MyApplication.getInstance().getDataPreferences().setMedicalChoosen(list);
+                parentFragment.refreshData();
             }
         });
     }
@@ -90,12 +102,12 @@ public class AdapterCart extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         public CustomTextView tvType;
         public CustomTextView tvPackage;
         public CustomTextView tvDate;
-        public CustomImageButton btnAdd;
+        public CustomImageButton btnDelete;
 
         public TextViewHolder(View v) {
             super(v);
 
-            btnAdd = (CustomImageButton) v.findViewById(R.id.btnAdd);
+            btnDelete = (CustomImageButton) v.findViewById(R.id.btn_delete);
             tvClinic = (CustomTextView) v.findViewById(R.id.clinic);
             tvType = (CustomTextView) v.findViewById(R.id.type);
             tvPackage = (CustomTextView) v.findViewById(R.id.package_medical);
