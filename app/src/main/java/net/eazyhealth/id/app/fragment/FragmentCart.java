@@ -11,6 +11,10 @@ import android.view.ViewGroup;
 import net.eazyhealth.id.app.R;
 import net.eazyhealth.id.app.adapter.AdapterCart;
 import net.eazyhealth.id.app.application.MyApplication;
+import net.eazyhealth.id.app.model.response.backendless.Mcu;
+
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Created by GALIH ADITYO on 4/18/2016.
@@ -35,7 +39,11 @@ public class FragmentCart extends Fragment {
     }
 
     public void refreshData() {
-        adapter = new AdapterCart(getActivity(), MyApplication.getInstance().getDataPreferences().getMedicalChoosen(), this);
+        List<Mcu> data = MyApplication.getInstance().getDataPreferences().getMedicalChoosen();
+        if (data == null || data.size() < 1) {
+            data = new LinkedList<>();
+        }
+        adapter = new AdapterCart(getActivity(), data, this);
         rv.setAdapter(adapter);
     }
 }

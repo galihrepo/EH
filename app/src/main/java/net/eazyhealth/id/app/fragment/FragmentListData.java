@@ -141,7 +141,6 @@ public class FragmentListData extends Fragment implements SwipeRefreshLayout.OnR
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-
                 swipeRefreshLayout.setRefreshing(false);
             }
         });

@@ -167,7 +167,7 @@
 -dontwarn weborb.**
 -keep class weborb.** {*;}
 -keep class com.backendless.** {*;}
--keep class com.tactel.memegenerator.model.** {*;}
+-keep class net.eazyhealth.id.app.model.** {*;}
 
 # --- Additional config by GALIH ADITYO ---
 
