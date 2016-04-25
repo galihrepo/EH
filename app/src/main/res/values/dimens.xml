@@ -35,4 +35,10 @@
     <dimen name="line_spacing">1.5dp</dimen>
 
     <dimen name="padding_notification">6.5dp</dimen>
+
+    <dimen name="title_sub_item_padding_left_right">20dp</dimen>
+    <dimen name="title_sub_item_padding_top_bottom">7.5dp</dimen>
+    <dimen name="sub_item_padding_left_right">20dp</dimen>
+    <dimen name="sub_item_padding_top_bottom">6.5dp</dimen>
+
 </resources>

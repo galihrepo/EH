@@ -8,7 +8,7 @@ import android.widget.RelativeLayout;
 import net.eazyhealth.id.app.R;
 import net.eazyhealth.id.app.custom.CustomAppCompatActivity;
 import net.eazyhealth.id.app.custom.CustomTextView;
-import net.eazyhealth.id.app.fragment.FragmentCart;
+import net.eazyhealth.id.app.fragment.payment.FragmentPayment;
 
 public class PaymentActivity extends CustomAppCompatActivity {
 
@@ -23,7 +23,7 @@ public class PaymentActivity extends CustomAppCompatActivity {
     }
 
     private void initVariable() {
-        getSupportFragmentManager().beginTransaction().replace(R.id.placeholder, new FragmentCart()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.placeholder, new FragmentPayment()).commit();
     }
 
     private void includeView() {

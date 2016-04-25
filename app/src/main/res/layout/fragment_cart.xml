@@ -17,7 +17,7 @@
             android:layout_weight="1" />
 
         <view
-            android:id="@+id/btnPayment"
+            android:id="@+id/btn_payment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             class="net.eazyhealth.id.app.custom.CustomRippleView">

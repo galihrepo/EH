@@ -1,12 +1,178 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
     tools:context="net.eazyhealth.id.app.activity.PaymentActivity">
 
-</RelativeLayout>
+    <view
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        class="net.eazyhealth.id.app.custom.CustomScrollView">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <view
+                    style="@style/text_view_big_white"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    class="net.eazyhealth.id.app.custom.CustomTextView"
+                    android:text="@string/atm_and_bank_transfer"
+                    android:background="@color/blue_0"
+                    android:paddingLeft="@dimen/title_sub_item_padding_left_right"
+                    android:paddingRight="@dimen/title_sub_item_padding_left_right"
+                    android:paddingTop="@dimen/title_sub_item_padding_top_bottom"
+                    android:paddingBottom="@dimen/title_sub_item_padding_top_bottom" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/sub_item_padding_left_right"
+                    android:paddingRight="@dimen/sub_item_padding_left_right"
+                    android:paddingTop="@dimen/sub_item_padding_top_bottom"
+                    android:paddingBottom="@dimen/sub_item_padding_top_bottom">
+
+                    <view
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        class="net.eazyhealth.id.app.custom.CustomImageView"
+                        android:src="@drawable/ic_bank_bca"
+                        android:layout_gravity="center" />
+
+                    <view
+                        style="@style/text_view_normal_black"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        class="net.eazyhealth.id.app.custom.CustomTextView"
+                        android:text="@string/atm_transfer_bca"
+                        android:paddingLeft="@dimen/sub_item_padding_left_right"
+                        android:paddingRight="@dimen/sub_item_padding_left_right" />
+
+                    <view
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        class="net.eazyhealth.id.app.custom.CustomRadioGroup"
+                        android:layout_gravity="center">
+
+                        <view
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            class="net.eazyhealth.id.app.custom.CustomRadioButton" />
+                    </view>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/sub_item_padding_left_right"
+                    android:paddingRight="@dimen/sub_item_padding_left_right"
+                    android:paddingTop="@dimen/sub_item_padding_top_bottom"
+                    android:paddingBottom="@dimen/sub_item_padding_top_bottom">
+
+                    <view
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        class="net.eazyhealth.id.app.custom.CustomImageView"
+                        android:src="@drawable/ic_bank_mandiri"
+                        android:layout_gravity="center" />
+
+                    <view
+                        style="@style/text_view_normal_black"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        class="net.eazyhealth.id.app.custom.CustomTextView"
+                        android:text="@string/atm_transfer_bca"
+                        android:paddingLeft="@dimen/sub_item_padding_left_right"
+                        android:paddingRight="@dimen/sub_item_padding_left_right" />
+
+                    <view
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        class="net.eazyhealth.id.app.custom.CustomRadioGroup"
+                        android:layout_gravity="center">
+
+                        <view
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            class="net.eazyhealth.id.app.custom.CustomRadioButton" />
+                    </view>
+                </LinearLayout>
+            </LinearLayout>
+
+            <view
+                style="@style/text_view_big_white"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                class="net.eazyhealth.id.app.custom.CustomTextView"
+                android:text="@string/user_bank_account_data"
+                android:background="@color/blue_0"
+                android:paddingLeft="@dimen/title_sub_item_padding_left_right"
+                android:paddingRight="@dimen/title_sub_item_padding_left_right"
+                android:paddingTop="@dimen/title_sub_item_padding_top_bottom"
+                android:paddingBottom="@dimen/title_sub_item_padding_top_bottom" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingLeft="@dimen/title_sub_item_padding_left_right"
+                android:paddingRight="@dimen/title_sub_item_padding_left_right"
+                android:paddingTop="@dimen/sub_item_padding_top_bottom"
+                android:paddingBottom="@dimen/sub_item_padding_top_bottom">
+
+                <view
+                    style="@style/edit_text_normal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    class="net.eazyhealth.id.app.custom.CustomEditText"
+                    android:hint="@string/bank_account" />
+
+                <view
+                    style="@style/edit_text_normal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    class="net.eazyhealth.id.app.custom.CustomEditText"
+                    android:hint="@string/account_number" />
+
+                <view
+                    style="@style/edit_text_normal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    class="net.eazyhealth.id.app.custom.CustomEditText"
+                    android:hint="@string/account_name" />
+            </LinearLayout>
+        </LinearLayout>
+    </view>
+
+    <view
+        android:id="@+id/btn_payment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        class="net.eazyhealth.id.app.custom.CustomRippleView">
+
+        <view
+            style="@style/text_view_big_white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            class="net.eazyhealth.id.app.custom.CustomTextView"
+            android:background="@color/pink_0"
+            android:text="@string/pay"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
+            android:gravity="center" />
+    </view>
+</LinearLayout>
