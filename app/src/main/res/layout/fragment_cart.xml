@@ -14,24 +14,53 @@
             android:id="@+id/rv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:background="@android:color/white" />
 
-        <view
-            android:id="@+id/btn_payment"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            class="net.eazyhealth.id.app.custom.CustomRippleView">
+            android:padding="10dp"
+            android:orientation="horizontal"
+            android:background="@color/grey_2">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <view
+                    style="@style/text_view_very_small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    class="net.eazyhealth.id.app.custom.CustomTextView"
+                    android:text="Total :" />
+
+                <view
+                    style="@style/text_view_super_big_red"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    class="net.eazyhealth.id.app.custom.CustomTextView"
+                    android:text="15000" />
+            </LinearLayout>
 
             <view
-                style="@style/text_view_big_white"
-                android:layout_width="match_parent"
+                android:id="@+id/btn_payment"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                class="net.eazyhealth.id.app.custom.CustomTextView"
-                android:background="@color/pink_0"
-                android:text="@string/goto_payment"
-                android:paddingBottom="10dp"
-                android:paddingTop="10dp"
-                android:gravity="center" />
-        </view>
+                class="net.eazyhealth.id.app.custom.CustomRippleView">
+
+                <view
+                    style="@style/text_view_big_white"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    class="net.eazyhealth.id.app.custom.CustomTextView"
+                    android:background="@color/pink_0"
+                    android:text="@string/goto_payment"
+                    android:padding="10dp"
+                    android:gravity="center" />
+            </view>
+        </LinearLayout>
     </LinearLayout>
 </FrameLayout>

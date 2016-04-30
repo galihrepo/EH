@@ -1,8 +1,7 @@
 package net.eazyhealth.id.app.fragment;
 
-import android.graphics.Color;
+import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.text.method.PasswordTransformationMethod;
@@ -13,26 +12,35 @@ import android.widget.CompoundButton;
 
 import com.backendless.Backendless;
 import com.backendless.BackendlessUser;
-import com.backendless.async.callback.BackendlessCallback;
+import com.backendless.async.callback.AsyncCallback;
 import com.backendless.exceptions.BackendlessFault;
 
 import net.eazyhealth.id.app.R;
+import net.eazyhealth.id.app.activity.HomeActivity;
+import net.eazyhealth.id.app.activity.RegistrationActivity;
 import net.eazyhealth.id.app.custom.CustomAutoCompleteTextView;
 import net.eazyhealth.id.app.custom.CustomButton;
 import net.eazyhealth.id.app.custom.CustomCheckBox;
 import net.eazyhealth.id.app.custom.CustomEditText;
+import net.eazyhealth.id.app.custom.CustomProgressDialog;
+import net.eazyhealth.id.app.custom.CustomRippleView;
+import net.eazyhealth.id.app.custom.CustomTextView;
 import net.eazyhealth.id.app.custom.CustomToast;
-import net.steamcrafted.loadtoast.LoadToast;
+import net.eazyhealth.id.app.custom.RippleViewAndroidM;
 
 /**
  * Created by GALIH ADITYO on 3/29/2016.
  */
 public class FragmentLogin extends Fragment {
 
+    private final boolean stayLoggedIn = true;
+    private HomeActivity parentActivity;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.activity_login, container, false);
+        parentActivity = ((HomeActivity) getActivity());
         initView(view);
         return view;
     }
@@ -61,53 +69,90 @@ public class FragmentLogin extends Fragment {
             public void onClick(View v) {
                 if (etUsername.getText().toString().trim().length() == 0) {
                     CustomToast.showSnackbar(snackbar, "Username still empty");
+                    etUsername.requestFocus();
+                    etUsername.invalidate();
                     return;
                 }
 
                 if (etPassword.getText().toString().trim().length() == 0) {
                     CustomToast.showSnackbar(snackbar, "Password still empty");
+                    etPassword.requestFocus();
+                    etPassword.invalidate();
                     return;
                 }
 
-//                DataPreferences accountPreferences = new DataPreferences(getActivity());
-//                accountPreferences.setUsername(etUsername.getText().toString());
-//                accountPreferences.setPassword(etPassword.getText().toString());
+                final CustomProgressDialog customProgressDialog = new CustomProgressDialog(getActivity());
+                if (customProgressDialog != null && !customProgressDialog.isShowing()) {
+                    customProgressDialog.show();
+                }
 
-                BackendlessUser user = new BackendlessUser();
-                user.setEmail(etUsername.getText().toString());
-                user.setPassword(etPassword.getText().toString());
+                Backendless.UserService.login(
+                        etUsername.getText().toString().trim(),
+                        etPassword.getText().toString().trim(),
+                        new AsyncCallback<BackendlessUser>() {
+                            @Override
+                            public void handleResponse(BackendlessUser response) {
+                                if (customProgressDialog != null && customProgressDialog.isShowing()) {
+                                    customProgressDialog.dismiss();
+                                }
 
-                final LoadToast load = new LoadToast(getActivity());
-                load.setText("Sending data..");
-                load.setTranslationY(100);
-                load.setTextColor(Color.WHITE);
-                load.setBackgroundColor(getResources().getColor(R.color.green_6));
-                load.setProgressColor(getResources().getColor(R.color.colorPrimaryDark));
-                load.show();
+                                CustomToast.showSnackbar(snackbar, "Login succeed");
+                            }
 
-                Backendless.UserService.register(user, new BackendlessCallback<BackendlessUser>() {
+                            @Override
+                            public void handleFault(BackendlessFault fault) {
+                                if (customProgressDialog != null && customProgressDialog.isShowing()) {
+                                    customProgressDialog.dismiss();
+                                }
+
+                                try {
+                                    CustomToast.showSnackbar(snackbar, fault.getMessage());
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        },
+                        true
+                );
+            }
+        });
+
+        CustomRippleView btnLoginFb = (CustomRippleView) view.findViewById(R.id.btn_login_fb);
+        btnLoginFb.setOnRippleCompleteListener(new RippleViewAndroidM.OnRippleCompleteListener() {
+            @Override
+            public void onComplete(RippleViewAndroidM rippleView) {
+                Backendless.UserService.loginWithFacebookSdk(getActivity(), parentActivity.getFacebookCallbackManager(), new AsyncCallback<BackendlessUser>() {
                     @Override
                     public void handleResponse(BackendlessUser response) {
-//                        CustomToast.setMessage(getActivity(), response.toString());
-                        load.success();
-                        Handler handler = new Handler();
-                        handler.postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
-                                getActivity().recreate();
-                            }
-                        }, 2000);
+
                     }
 
                     @Override
                     public void handleFault(BackendlessFault fault) {
-                        super.handleFault(fault);
-                        CustomToast.setMessage(getActivity(), fault.toString());
-                        load.error();
+
                     }
                 });
             }
         });
 
+        CustomTextView btnRegister = (CustomTextView) view.findViewById(R.id.btn_register);
+        btnRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getActivity(), RegistrationActivity.class);
+                i.putExtra(RegistrationActivity.REQUEST_BUNDLE, RegistrationActivity.REQUEST_REGISTRATION);
+                startActivityForResult(i, RegistrationActivity.REQUEST_REGISTRATION);
+            }
+        });
+
+        CustomTextView btnForgotPw = (CustomTextView) view.findViewById(R.id.btn_forgot_password);
+        btnForgotPw.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getActivity(), RegistrationActivity.class);
+                i.putExtra(RegistrationActivity.REQUEST_BUNDLE, RegistrationActivity.REQUEST_RESET_PASSWORD);
+                startActivityForResult(i, RegistrationActivity.REQUEST_RESET_PASSWORD);
+            }
+        });
     }
 }

@@ -35,5 +35,7 @@ public class CustomTextView extends TextView {
     private void init(Context context) {
         Typeface customFont = FontCache.getTypeface(CustomEditText.TYPEFACE_NAME, context);
         setTypeface(customFont);
+
+        setIncludeFontPadding(false);
     }
 }

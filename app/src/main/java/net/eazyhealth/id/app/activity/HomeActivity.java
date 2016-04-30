@@ -1,5 +1,6 @@
 package net.eazyhealth.id.app.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -13,6 +14,8 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 
+import com.facebook.CallbackManager;
+import com.facebook.FacebookSdk;
 import com.thinkcool.circletextimageview.CircleTextImageView;
 
 import net.eazyhealth.id.app.R;
@@ -34,6 +37,9 @@ public class HomeActivity extends CustomAppCompatActivity implements NavigationV
     private Toolbar toolbar;
     private View templateToolbar;
 
+    // facebook
+    private CallbackManager callbackManager;
+
     @Override
     protected void onResume() {
         super.onResume();
@@ -44,6 +50,10 @@ public class HomeActivity extends CustomAppCompatActivity implements NavigationV
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        // facebook
+        FacebookSdk.sdkInitialize(this);
+        callbackManager = CallbackManager.Factory.create();
 
         dataPreferences = new DataPreferences(this);
 
@@ -172,5 +182,15 @@ public class HomeActivity extends CustomAppCompatActivity implements NavigationV
     private void menuDashboard() {
         navigationView.getMenu().getItem(0).setChecked(true);
         getSupportFragmentManager().beginTransaction().replace(placeholder.getId(), new FragmentDashboard()).commit();
+    }
+
+    public CallbackManager getFacebookCallbackManager() {
+        return callbackManager;
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        callbackManager.onActivityResult(requestCode, resultCode, data);
     }
 }

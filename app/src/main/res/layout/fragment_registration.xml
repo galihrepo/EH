@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="net.eazyhealth.id.app.activity.RegistrationActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/title_sub_item_padding_left_right"
+        android:paddingRight="@dimen/title_sub_item_padding_left_right"
+        android:paddingTop="@dimen/sub_item_padding_top_bottom"
+        android:paddingBottom="@dimen/sub_item_padding_top_bottom"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true">
+
+        <view
+            android:id="@+id/et_name"
+            style="@style/edit_text_normal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            class="net.eazyhealth.id.app.custom.CustomEditText"
+            android:hint="@string/name"
+            android:inputType="textCapWords" />
+
+        <view
+            android:id="@+id/et_email"
+            style="@style/edit_text_normal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            class="net.eazyhealth.id.app.custom.CustomEditText"
+            android:hint="@string/email"
+            android:inputType="textEmailAddress" />
+
+        <view
+            android:id="@+id/et_password"
+            style="@style/edit_text_normal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            class="net.eazyhealth.id.app.custom.CustomEditText"
+            android:hint="@string/password"
+            android:inputType="textPassword" />
+
+        <view
+            android:id="@+id/et_confirm_password"
+            style="@style/edit_text_normal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            class="net.eazyhealth.id.app.custom.CustomEditText"
+            android:hint="@string/confirm_password"
+            android:inputType="textPassword" />
+
+        <view
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            class="net.eazyhealth.id.app.custom.CustomLinearLayout"
+            android:orientation="horizontal"
+            android:paddingTop="7.5dp"
+            android:paddingBottom="12.5dp"
+            android:layout_marginBottom="25dp">
+
+            <view
+                android:id="@+id/show_password_cb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                class="net.eazyhealth.id.app.custom.CustomCheckBox" />
+
+            <view
+                style="@style/text_view_small_grey"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                class="net.eazyhealth.id.app.custom.CustomTextView"
+                android:text="@string/terms_use_agreement" />
+
+        </view>
+
+        <view
+            android:id="@+id/btn_register"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            class="net.eazyhealth.id.app.custom.CustomRippleView">
+
+            <view
+                style="@style/text_view_big_white"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                class="net.eazyhealth.id.app.custom.CustomTextView"
+                android:background="@color/colorPrimaryDark"
+                android:text="@string/register"
+                android:padding="10dp"
+                android:gravity="center" />
+        </view>
+
+    </LinearLayout>
+
+    <android.support.design.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/sb" />
+
+</RelativeLayout>

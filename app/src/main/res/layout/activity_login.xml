@@ -9,102 +9,138 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <view
-            android:id="@+id/image"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            class="net.eazyhealth.id.app.custom.CustomImageView"
-            android:src="@drawable/logo"
-            android:layout_centerHorizontal="true"/>
-        <view
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            class="net.eazyhealth.id.app.custom.CustomLinearLayout"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingLeft="30dp"
-            android:paddingRight="30dp"
-            android:layout_below="@+id/image">
-            <view
-                style="@style/edit_text_normal"
-                android:id="@+id/username_et"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                class="net.eazyhealth.id.app.custom.CustomAutoCompleteTextView"
-                android:hint="@string/username"
-                android:inputType="textEmailAddress"
-                android:nextFocusDown="@+id/password_et"/>
-            <view
-                style="@style/edit_text_normal"
-                android:id="@+id/password_et"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                class="net.eazyhealth.id.app.custom.CustomEditText"
-                android:hint="@string/password"
-                android:inputType="textPassword"
-                android:imeOptions="actionDone"/>
-            <view
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                class="net.eazyhealth.id.app.custom.CustomLinearLayout"
-                android:orientation="horizontal"
-                android:paddingTop="7.5dp"
-                android:paddingBottom="12.5dp">
-                <view
-                    android:id="@+id/show_password_cb"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    class="net.eazyhealth.id.app.custom.CustomCheckBox"/>
-                <view
-                    style="@style/text_view_small_grey"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    class="net.eazyhealth.id.app.custom.CustomTextView"
-                    android:text="@string/show_password"/>
-            </view>
-            <view
-                android:id="@+id/login_btn"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                class="net.eazyhealth.id.app.custom.CustomButton"
-                android:hint="@string/login"/>
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true">
 
             <view
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 class="net.eazyhealth.id.app.custom.CustomLinearLayout"
-                android:orientation="horizontal"
-                android:gravity="center_horizontal"
-                android:paddingTop="20dp">
+                android:orientation="vertical"
+                android:paddingLeft="30dp"
+                android:paddingRight="30dp">
+
                 <view
-                    style="@style/text_view_small_grey"
-                    android:layout_width="0dp"
+                    style="@style/edit_text_normal"
+                    android:id="@+id/username_et"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    class="net.eazyhealth.id.app.custom.CustomTextView"
-                    android:text="@string/forgot_password"
-                    android:gravity="center"
-                    android:drawableBottom="@drawable/dashed_line"/>
-                <!--<view-->
+                    class="net.eazyhealth.id.app.custom.CustomAutoCompleteTextView"
+                    android:hint="@string/email"
+                    android:inputType="textEmailAddress"
+                    android:nextFocusDown="@+id/password_et" />
+
+                <view
+                    style="@style/edit_text_normal"
+                    android:id="@+id/password_et"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    class="net.eazyhealth.id.app.custom.CustomEditText"
+                    android:hint="@string/password"
+                    android:inputType="textPassword"
+                    android:imeOptions="actionDone" />
+
+                <view
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    class="net.eazyhealth.id.app.custom.CustomLinearLayout"
+                    android:orientation="horizontal"
+                    android:paddingTop="7.5dp"
+                    android:paddingBottom="12.5dp">
+
+                    <view
+                        android:id="@+id/show_password_cb"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        class="net.eazyhealth.id.app.custom.CustomCheckBox" />
+
+                    <view
+                        style="@style/text_view_small_grey"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        class="net.eazyhealth.id.app.custom.CustomTextView"
+                        android:text="@string/show_password" />
+
+                </view>
+
+                <view
+                    android:id="@+id/login_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    class="net.eazyhealth.id.app.custom.CustomButton"
+                    android:hint="@string/login" />
+
+                <view
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    class="net.eazyhealth.id.app.custom.CustomLinearLayout"
+                    android:orientation="horizontal"
+                    android:gravity="center_horizontal"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="20dp">
+
+                    <view
+                        android:id="@+id/btn_forgot_password"
+                        style="@style/text_view_small_grey"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        class="net.eazyhealth.id.app.custom.CustomTextView"
+                        android:text="@string/forgot_password"
+                        android:gravity="center"
+                        android:drawableBottom="@drawable/dashed_line" />
+                    <!--<view-->
                     <!--style="@style/Base.TextAppearance.AppCompat.Medium"-->
                     <!--android:layout_width="wrap_content"-->
                     <!--android:layout_height="wrap_content"-->
                     <!--class="net.eazyhealth.id.app.custom.CustomTextView"/>-->
+                    <view
+                        android:id="@+id/btn_register"
+                        style="@style/text_view_small_grey"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        class="net.eazyhealth.id.app.custom.CustomTextView"
+                        android:text="@string/register"
+                        android:gravity="center"
+                        android:drawableBottom="@drawable/dashed_line" />
+
+                </view>
+
                 <view
-                    style="@style/text_view_small_grey"
-                    android:layout_width="0dp"
+                    android:id="@+id/btn_login_fb"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    class="net.eazyhealth.id.app.custom.CustomTextView"
-                    android:text="@string/register"
-                    android:gravity="center"
-                    android:drawableBottom="@drawable/dashed_line"/>
+                    class="net.eazyhealth.id.app.custom.CustomRippleView">
+
+                    <view
+                        style="@style/button_normal_white"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        class="net.eazyhealth.id.app.custom.CustomButton"
+                        android:background="@color/facebook_blue"
+                        android:drawableLeft="@drawable/ic_action_fb_white"
+                        android:text="Login with Facebook"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp" />
+
+                </view>
+
             </view>
-        </view>
+
+        </LinearLayout>
+
         <android.support.design.widget.CoordinatorLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:id="@+id/sb"/>
+
     </RelativeLayout>
 </net.eazyhealth.id.app.custom.CustomScrollView>

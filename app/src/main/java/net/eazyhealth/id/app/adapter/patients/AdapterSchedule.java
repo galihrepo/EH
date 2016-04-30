@@ -1,16 +1,12 @@
 package net.eazyhealth.id.app.adapter.patients;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.RelativeLayout;
 
 import net.eazyhealth.id.app.R;
-import net.eazyhealth.id.app.activity.DetailTemplateActivity;
 import net.eazyhealth.id.app.custom.CustomTextView;
 import net.eazyhealth.id.app.model.response.PatientsScheduleResponse;
 
@@ -32,12 +28,12 @@ public class AdapterSchedule extends RecyclerView.Adapter<AdapterSchedule.ViewHo
         public CustomTextView tvType;
         public CustomTextView tvPackage;
         public CustomTextView tvDate;
-        public RelativeLayout cardView;
+//        public RelativeLayout cardView;
 
         public ViewHolder(View v) {
             super(v);
 
-            cardView = (RelativeLayout) v.findViewById(R.id.card_view);
+//            cardView = (RelativeLayout) v.findViewById(R.id.card_view);
             tvClinic = (CustomTextView) v.findViewById(R.id.clinic);
             tvType = (CustomTextView) v.findViewById(R.id.type);
             tvPackage = (CustomTextView) v.findViewById(R.id.package_medical);
@@ -73,16 +69,16 @@ public class AdapterSchedule extends RecyclerView.Adapter<AdapterSchedule.ViewHo
         holder.tvPackage.setText(data.getPackageMedical());
         holder.tvDate.setText(data.getDate());
 
-        holder.cardView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(context.getApplicationContext(), DetailTemplateActivity.class);
-                i.putExtra("title", "Detail Schedule");
-                ((Activity)context).startActivityForResult(i, 0);
-//                context.startActivity(i);
-//                ((Activity)context).finish();
-            }
-        });
+//        holder.cardView.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent i = new Intent(context.getApplicationContext(), DetailTemplateActivity.class);
+//                i.putExtra("title", "Detail Schedule");
+//                ((Activity)context).startActivityForResult(i, 0);
+////                context.startActivity(i);
+////                ((Activity)context).finish();
+//            }
+//        });
     }
 
     // Return the size of your dataset (invoked by the layout manager)

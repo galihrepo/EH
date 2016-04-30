@@ -35,5 +35,9 @@ public class CustomButton extends Button {
     private void init(Context context) {
         Typeface customFont = FontCache.getTypeface(CustomEditText.TYPEFACE_NAME, context);
         setTypeface(customFont);
+
+        setIncludeFontPadding(false);
+
+        setAllCaps(false);
     }
 }

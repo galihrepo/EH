@@ -1,8 +1,6 @@
 package net.eazyhealth.id.app.activity;
 
-import android.os.Build;
 import android.os.Bundle;
-import android.support.design.widget.AppBarLayout;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.RelativeLayout;
@@ -10,11 +8,14 @@ import android.widget.RelativeLayout;
 import net.eazyhealth.id.app.R;
 import net.eazyhealth.id.app.custom.CustomAppCompatActivity;
 import net.eazyhealth.id.app.custom.CustomTextView;
-import net.eazyhealth.id.app.fragment.payment.FragmentPayment;
+import net.eazyhealth.id.app.fragment.FragmentForgotPassword;
+import net.eazyhealth.id.app.fragment.FragmentRegistration;
 
-public class PaymentActivity extends CustomAppCompatActivity {
+public class RegistrationActivity extends CustomAppCompatActivity {
 
-    private View includeToolbar;
+    public static final int REQUEST_REGISTRATION = 0;
+    public static final int REQUEST_RESET_PASSWORD = 1;
+    public static final String REQUEST_BUNDLE = RegistrationActivity.class.getSimpleName() + "bundle";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,22 +26,24 @@ public class PaymentActivity extends CustomAppCompatActivity {
     }
 
     private void initVariable() {
-        getSupportFragmentManager().beginTransaction().replace(R.id.placeholder, new FragmentPayment()).commit();
+        if (getIntent().getIntExtra(REQUEST_BUNDLE, 0) == REQUEST_REGISTRATION) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.placeholder, new FragmentRegistration()).commit();
+        } else if (getIntent().getIntExtra(REQUEST_BUNDLE, 0) == REQUEST_RESET_PASSWORD) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.placeholder, new FragmentForgotPassword()).commit();
+        }
     }
 
     private void includeView() {
-        includeToolbar = findViewById(R.id.include_toolbar);
+        View includeToolbar = findViewById(R.id.include_toolbar);
 
         CustomTextView tvTitle = (CustomTextView) includeToolbar.findViewById(R.id.title_tv);
-        tvTitle.setText(getString(R.string.cart_title));
+        if (getIntent().getIntExtra(REQUEST_BUNDLE, 0) == REQUEST_REGISTRATION) {
+            tvTitle.setText(getResources().getString(R.string.registration));
+        } else if (getIntent().getIntExtra(REQUEST_BUNDLE, 0) == REQUEST_RESET_PASSWORD) {
+            tvTitle.setText(getResources().getString(R.string.forgot_password));
+        }
 
         hideCart(includeToolbar);
-
-        // remove shadow elevation
-        AppBarLayout appBarLayout = (AppBarLayout) findViewById(R.id.appbar);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            appBarLayout.setElevation(0);
-        }
 
         Toolbar toolbar = (Toolbar) includeToolbar.findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">EazyHealth</string>
+    <string name="app_name">Eazy Health</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -9,7 +9,6 @@
     <string name="password">Password</string>
     <string name="login">Login</string>
     <string name="forgot_password">Forgot Password</string>
-    <string name="register">Register</string>
     <string name="pipe">|</string>
     <string name="show_password">Show Password</string>
     <string name="search_title_patient">Search Schedule</string>
@@ -30,10 +29,18 @@
     <string name="account_number">Account Number</string>
     <string name="account_name">Account Name</string>
     <string name="bank_account">Bank Account (ex. Mandiri, BCA, etc)</string>
-    <string name="atm_and_bank_transfer">ATM and Bank Transfer</string>
+    <string name="atm_and_bank_transfer">Bank Transfer</string>
     <string name="bank_transfer_bca">Nomor Rekening 123-456-789\nAtas nama SIMANJUNTAK</string>
     <string name="bank_transfer_mandiri">Nomor Rekening 123-456-789\nAtas nama SIMANJUNTAK</string>
     <string name="atm_transfer_bca">Nomor Rekening 123-456-789\nAtas nama SIMANJUNTAK</string>
     <string name="atm_transfer_mandiri">Nomor Rekening 123-456-789\nAtas nama SIMANJUNTAK</string>
-    <string name="user_bank_account_data">Please fill your bank account data</string>
+    <string name="user_bank_account_data">Your bank account</string>
+    <string name="facebook_app_id">235526613474053</string>
+    <string name="email">Email</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="terms_use_agreement">I agree to the Terms of Use</string>
+    <string name="name">Name</string>
+    <string name="register">Register</string>
+    <string name="registration">Registration</string>
+    <string name="reset_password">Reset Password</string>
 </resources>

@@ -40,8 +40,8 @@
                     android:orientation="horizontal"
                     android:paddingLeft="@dimen/sub_item_padding_left_right"
                     android:paddingRight="@dimen/sub_item_padding_left_right"
-                    android:paddingTop="@dimen/sub_item_padding_top_bottom"
-                    android:paddingBottom="@dimen/sub_item_padding_top_bottom">
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp">
 
                     <view
                         android:layout_width="wrap_content"
@@ -50,15 +50,28 @@
                         android:src="@drawable/ic_bank_bca"
                         android:layout_gravity="center" />
 
-                    <view
-                        style="@style/text_view_normal_black"
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        class="net.eazyhealth.id.app.custom.CustomTextView"
-                        android:text="@string/atm_transfer_bca"
+                        android:orientation="vertical"
                         android:paddingLeft="@dimen/sub_item_padding_left_right"
-                        android:paddingRight="@dimen/sub_item_padding_left_right" />
+                        android:paddingRight="@dimen/sub_item_padding_left_right">
+
+                        <view
+                            style="@style/text_view_very_big_black"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            class="net.eazyhealth.id.app.custom.CustomTextView"
+                            android:text="120-000-01213-01" />
+
+                        <view
+                            style="@style/text_view_small_grey"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            class="net.eazyhealth.id.app.custom.CustomTextView"
+                            android:text="a/n Simanjuntak" />
+                    </LinearLayout>
 
                     <view
                         android:layout_width="wrap_content"
@@ -79,8 +92,8 @@
                     android:orientation="horizontal"
                     android:paddingLeft="@dimen/sub_item_padding_left_right"
                     android:paddingRight="@dimen/sub_item_padding_left_right"
-                    android:paddingTop="@dimen/sub_item_padding_top_bottom"
-                    android:paddingBottom="@dimen/sub_item_padding_top_bottom">
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp">
 
                     <view
                         android:layout_width="wrap_content"
@@ -89,15 +102,28 @@
                         android:src="@drawable/ic_bank_mandiri"
                         android:layout_gravity="center" />
 
-                    <view
-                        style="@style/text_view_normal_black"
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        class="net.eazyhealth.id.app.custom.CustomTextView"
-                        android:text="@string/atm_transfer_bca"
+                        android:orientation="vertical"
                         android:paddingLeft="@dimen/sub_item_padding_left_right"
-                        android:paddingRight="@dimen/sub_item_padding_left_right" />
+                        android:paddingRight="@dimen/sub_item_padding_left_right">
+
+                        <view
+                            style="@style/text_view_very_big_black"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            class="net.eazyhealth.id.app.custom.CustomTextView"
+                            android:text="120-000-01213-01" />
+
+                        <view
+                            style="@style/text_view_small_grey"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            class="net.eazyhealth.id.app.custom.CustomTextView"
+                            android:text="a/n Simanjuntak" />
+                    </LinearLayout>
 
                     <view
                         android:layout_width="wrap_content"
@@ -114,6 +140,7 @@
             </LinearLayout>
 
             <view
+                android:layout_marginTop="15dp"
                 style="@style/text_view_big_white"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -158,21 +185,48 @@
         </LinearLayout>
     </view>
 
-    <view
-        android:id="@+id/btn_payment"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        class="net.eazyhealth.id.app.custom.CustomRippleView">
+        android:padding="10dp"
+        android:orientation="horizontal"
+        android:background="@color/grey_2">
 
-        <view
-            style="@style/text_view_big_white"
-            android:layout_width="match_parent"
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            class="net.eazyhealth.id.app.custom.CustomTextView"
-            android:background="@color/pink_0"
-            android:text="@string/pay"
-            android:paddingBottom="10dp"
-            android:paddingTop="10dp"
-            android:gravity="center" />
-    </view>
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <view
+                style="@style/text_view_very_small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                class="net.eazyhealth.id.app.custom.CustomTextView"
+                android:text="Total :" />
+
+            <view
+                style="@style/text_view_super_big_red"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                class="net.eazyhealth.id.app.custom.CustomTextView"
+                android:text="15000" />
+        </LinearLayout>
+        <view
+            android:id="@+id/btn_payment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            class="net.eazyhealth.id.app.custom.CustomRippleView">
+
+            <view
+                style="@style/text_view_big_white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                class="net.eazyhealth.id.app.custom.CustomTextView"
+                android:background="@color/pink_0"
+                android:text="Konfirmasi Pembayaran"
+                android:padding="10dp"
+                android:gravity="center" />
+        </view>
+    </LinearLayout>
 </LinearLayout>
