@@ -9,7 +9,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         class="net.eazyhealth.id.app.custom.CustomImageView"
-        android:src="@drawable/logo"
+        android:src="@drawable/ic_eazyhealth"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"/>
 

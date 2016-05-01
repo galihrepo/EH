@@ -35,7 +35,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     class="net.eazyhealth.id.app.custom.CustomTextView"
-                    android:text="Total :" />
+                    android:text="@string/total_price" />
 
                 <view
                     style="@style/text_view_super_big_red"

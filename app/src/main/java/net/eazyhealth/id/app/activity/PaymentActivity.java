@@ -32,7 +32,7 @@ public class PaymentActivity extends CustomAppCompatActivity {
         includeToolbar = findViewById(R.id.include_toolbar);
 
         CustomTextView tvTitle = (CustomTextView) includeToolbar.findViewById(R.id.title_tv);
-        tvTitle.setText(getString(R.string.cart_title));
+        tvTitle.setText(getString(R.string.payment_method));
 
         hideCart(includeToolbar);
 

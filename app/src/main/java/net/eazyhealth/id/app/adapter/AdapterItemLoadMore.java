@@ -159,7 +159,7 @@ public class AdapterItemLoadMore extends RecyclerView.Adapter<RecyclerView.ViewH
                 @Override
                 public void onClick(View v) {
                     Intent i = new Intent(context.getApplicationContext(), DetailTemplateActivity.class);
-                    i.putExtra("title", "Detail Schedule");
+                    i.putExtra("title", context.getResources().getString(R.string.detail_medical_checkup));
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                         ((Activity) context).startActivityForResult(i, 0, ActivityOptions.makeSceneTransitionAnimation((Activity) context).toBundle());
                     } else {

@@ -14,7 +14,7 @@
         android:paddingRight="20dp"
         class="net.eazyhealth.id.app.custom.CustomTextView"
         android:background="@color/green_0"
-        android:text="@string/title"
+        android:text="@string/choose_schedule"
         android:singleLine="true"
         android:ellipsize="end"/>
 
@@ -74,6 +74,6 @@
             class="net.eazyhealth.id.app.custom.CustomTextView"
             android:background="@drawable/btn_option"
             android:gravity="center"
-            android:text="Submit" />
+            android:text="@string/save" />
     </LinearLayout>
 </LinearLayout>

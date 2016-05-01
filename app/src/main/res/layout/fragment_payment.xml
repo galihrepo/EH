@@ -41,7 +41,8 @@
                     android:paddingLeft="@dimen/sub_item_padding_left_right"
                     android:paddingRight="@dimen/sub_item_padding_left_right"
                     android:paddingTop="10dp"
-                    android:paddingBottom="10dp">
+                    android:paddingBottom="10dp"
+                    android:layout_marginTop="15dp">
 
                     <view
                         android:layout_width="wrap_content"
@@ -59,9 +60,10 @@
                         android:paddingRight="@dimen/sub_item_padding_left_right">
 
                         <view
-                            style="@style/text_view_very_big_black"
+                            style="@style/text_view_big_black"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginBottom="@dimen/line_spacing"
                             class="net.eazyhealth.id.app.custom.CustomTextView"
                             android:text="120-000-01213-01" />
 
@@ -93,7 +95,8 @@
                     android:paddingLeft="@dimen/sub_item_padding_left_right"
                     android:paddingRight="@dimen/sub_item_padding_left_right"
                     android:paddingTop="10dp"
-                    android:paddingBottom="10dp">
+                    android:paddingBottom="10dp"
+                    android:layout_marginBottom="15dp">
 
                     <view
                         android:layout_width="wrap_content"
@@ -111,9 +114,10 @@
                         android:paddingRight="@dimen/sub_item_padding_left_right">
 
                         <view
-                            style="@style/text_view_very_big_black"
+                            style="@style/text_view_big_black"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginBottom="@dimen/line_spacing"
                             class="net.eazyhealth.id.app.custom.CustomTextView"
                             android:text="120-000-01213-01" />
 
@@ -140,7 +144,6 @@
             </LinearLayout>
 
             <view
-                android:layout_marginTop="15dp"
                 style="@style/text_view_big_white"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -150,7 +153,8 @@
                 android:paddingLeft="@dimen/title_sub_item_padding_left_right"
                 android:paddingRight="@dimen/title_sub_item_padding_left_right"
                 android:paddingTop="@dimen/title_sub_item_padding_top_bottom"
-                android:paddingBottom="@dimen/title_sub_item_padding_top_bottom" />
+                android:paddingBottom="@dimen/title_sub_item_padding_top_bottom"
+                android:layout_marginBottom="15dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -166,21 +170,24 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     class="net.eazyhealth.id.app.custom.CustomEditText"
-                    android:hint="@string/bank_account" />
+                    android:hint="@string/bank_account"
+                    android:inputType="textCapCharacters" />
 
                 <view
                     style="@style/edit_text_normal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     class="net.eazyhealth.id.app.custom.CustomEditText"
-                    android:hint="@string/account_number" />
+                    android:hint="@string/account_number"
+                    android:inputType="number" />
 
                 <view
                     style="@style/edit_text_normal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     class="net.eazyhealth.id.app.custom.CustomEditText"
-                    android:hint="@string/account_name" />
+                    android:hint="@string/account_name"
+                    android:inputType="textCapWords" />
             </LinearLayout>
         </LinearLayout>
     </view>
@@ -224,7 +231,7 @@
                 android:layout_height="wrap_content"
                 class="net.eazyhealth.id.app.custom.CustomTextView"
                 android:background="@color/pink_0"
-                android:text="Konfirmasi Pembayaran"
+                android:text="@string/pay"
                 android:padding="10dp"
                 android:gravity="center" />
         </view>

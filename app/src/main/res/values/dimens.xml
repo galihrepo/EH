@@ -32,7 +32,10 @@
 
     <dimen name="margin_top_subitem">10dp</dimen>
     <dimen name="margin_bottom_subitem">4dp</dimen>
-    <dimen name="line_spacing">1.5dp</dimen>
+
+    <dimen name="line_spacing">2.5dp</dimen>
+    <dimen name="line_spacing_subitem">7.5dp</dimen>
+    <dimen name="line_spacing_paragraph">15dp</dimen>
 
     <dimen name="padding_notification">6.5dp</dimen>
 

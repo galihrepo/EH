@@ -29,6 +29,7 @@
                     style="@style/text_view_very_big_green"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/line_spacing_subitem"
                     class="net.eazyhealth.id.app.custom.CustomTextView"
                     android:text="Klinik Prodea"
                     android:singleLine="true"
@@ -38,6 +39,7 @@
                     style="@style/text_view_normal_black"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/line_spacing"
                     class="net.eazyhealth.id.app.custom.CustomTextView"
                     android:text="Check darah"
                     android:singleLine="true"
@@ -48,6 +50,7 @@
                     style="@style/text_view_small_grey"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/line_spacing"
                     class="net.eazyhealth.id.app.custom.CustomTextView"
                     android:text="Paket A : non trombosit"
                     android:singleLine="true"
@@ -58,6 +61,8 @@
                     style="@style/text_view_small_red"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/line_spacing"
+                    android:layout_marginBottom="@dimen/line_spacing"
                     class="net.eazyhealth.id.app.custom.CustomTextView"
                     android:text="Selasa, 28 Maret 2016"
                     android:singleLine="true"
@@ -93,17 +98,17 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         class="net.eazyhealth.id.app.custom.CustomTextView"
-                        android:text="Add"
+                        android:text="@string/add"
                         android:layout_below="@+id/package_medical"
                         android:paddingLeft="5dp" />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:orientation="vertical"
-                    android:gravity="bottom">
+                    android:gravity="bottom|right">
 
                     <view
                         android:id="@+id/btnDetail"

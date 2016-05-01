@@ -47,44 +47,64 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textSize">@dimen/size_textview_super_big</item>
+        <item name="android:lineSpacingExtra">@dimen/line_spacing</item>
     </style>
+
     <style name="text_view_very_big">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textSize">@dimen/size_textview_very_big</item>
+        <item name="android:lineSpacingExtra">@dimen/line_spacing</item>
     </style>
+
     <style name="text_view_big">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textSize">@dimen/size_textview_big</item>
+        <item name="android:lineSpacingExtra">@dimen/line_spacing</item>
     </style>
+
     <style name="text_view_normal">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textSize">@dimen/size_textview_normal</item>
+        <item name="android:lineSpacingExtra">@dimen/line_spacing</item>
     </style>
+
     <style name="text_view_small">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textSize">@dimen/size_textview_small</item>
+        <item name="android:lineSpacingExtra">@dimen/line_spacing</item>
     </style>
+
     <style name="text_view_very_small">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textSize">@dimen/size_textview_very_small</item>
+        <item name="android:lineSpacingExtra">@dimen/line_spacing</item>
     </style>
+
     <style name="text_view_small_white" parent="text_view_small">
         <item name="android:textColor">@android:color/white</item>
     </style>
+
     <style name="text_view_small_black" parent="text_view_small">
         <item name="android:textColor">@color/text_primary_dark</item>
     </style>
+
     <style name="text_view_small_green" parent="text_view_small">
         <item name="android:textColor">@color/green_10</item>
     </style>
+
     <style name="text_view_small_grey" parent="text_view_small">
         <item name="android:textColor">@color/text_secondary_dark</item>
     </style>
+
+    <style name="text_view_very_small_grey" parent="text_view_very_small">
+        <item name="android:textColor">@color/text_secondary_dark</item>
+    </style>
+
     <style name="text_view_small_red" parent="text_view_small">
         <item name="android:textColor">@color/red_0</item>
     </style>
@@ -92,18 +112,23 @@
     <style name="text_view_normal_white" parent="text_view_normal">
         <item name="android:textColor">@android:color/white</item>
     </style>
+
     <style name="text_view_normal_black" parent="text_view_normal">
         <item name="android:textColor">@color/text_primary_dark</item>
     </style>
+
     <style name="text_view_normal_green" parent="text_view_normal">
         <item name="android:textColor">@color/green_10</item>
     </style>
+
     <style name="text_view_normal_pink" parent="text_view_normal">
         <item name="android:textColor">@color/pink_7</item>
     </style>
+
     <style name="text_view_normal_blue" parent="text_view_normal">
         <item name="android:textColor">@color/blue_10</item>
     </style>
+
     <style name="text_view_normal_grey" parent="text_view_normal">
         <item name="android:textColor">@color/text_secondary_dark</item>
     </style>
@@ -111,12 +136,15 @@
     <style name="text_view_big_white" parent="text_view_big">
         <item name="android:textColor">@android:color/white</item>
     </style>
+
     <style name="text_view_big_black" parent="text_view_big">
         <item name="android:textColor">@color/text_primary_dark</item>
     </style>
+
     <style name="text_view_big_green" parent="text_view_big">
         <item name="android:textColor">@color/green_10</item>
     </style>
+
     <style name="text_view_big_grey" parent="text_view_big">
         <item name="android:textColor">@color/text_secondary_dark</item>
     </style>
@@ -124,12 +152,15 @@
     <style name="text_view_very_big_white" parent="text_view_very_big">
         <item name="android:textColor">@android:color/white</item>
     </style>
+
     <style name="text_view_very_big_black" parent="text_view_very_big">
         <item name="android:textColor">@color/text_primary_dark</item>
     </style>
+
     <style name="text_view_very_big_green" parent="text_view_very_big">
         <item name="android:textColor">@color/green_10</item>
     </style>
+
     <style name="text_view_very_big_grey" parent="text_view_very_big">
         <item name="android:textColor">@color/text_secondary_dark</item>
     </style>
@@ -155,4 +186,5 @@
         <item name="android:textSize">@dimen/size_textview_normal</item>
         <item name="android:textColor">@android:color/white</item>
     </style>
+
 </resources>
