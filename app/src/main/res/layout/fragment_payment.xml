@@ -38,109 +38,169 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:paddingLeft="@dimen/sub_item_padding_left_right"
-                    android:paddingRight="@dimen/sub_item_padding_left_right"
-                    android:paddingTop="10dp"
-                    android:paddingBottom="10dp"
-                    android:layout_marginTop="15dp">
-
-                    <view
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        class="net.eazyhealth.id.app.custom.CustomImageView"
-                        android:src="@drawable/ic_bank_bca"
-                        android:layout_gravity="center" />
+                    android:paddingTop="15dp"
+                    android:paddingBottom="15dp">
 
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:orientation="vertical"
-                        android:paddingLeft="@dimen/sub_item_padding_left_right"
-                        android:paddingRight="@dimen/sub_item_padding_left_right">
-
+                        android:orientation="vertical">
                         <view
-                            style="@style/text_view_big_black"
+                            android:id="@+id/btn_bca"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginBottom="@dimen/line_spacing"
-                            class="net.eazyhealth.id.app.custom.CustomTextView"
-                            android:text="120-000-01213-01" />
+                            class="net.eazyhealth.id.app.custom.CustomRippleView">
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:paddingLeft="@dimen/sub_item_padding_left_right"
+                                android:paddingRight="@dimen/sub_item_padding_left_right"
+                                android:paddingTop="10dp"
+                                android:paddingBottom="10dp">
+
+                                <view
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    class="net.eazyhealth.id.app.custom.CustomImageView"
+                                    android:src="@drawable/ic_bank_bca"
+                                    android:layout_gravity="center" />
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:orientation="vertical"
+                                    android:paddingLeft="@dimen/sub_item_padding_left_right"
+                                    android:paddingRight="@dimen/sub_item_padding_left_right">
+
+                                    <view
+                                        style="@style/text_view_big_black"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginBottom="@dimen/line_spacing"
+                                        class="net.eazyhealth.id.app.custom.CustomTextView"
+                                        android:text="120-000-01213-01" />
+
+                                    <view
+                                        style="@style/text_view_small_grey"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        class="net.eazyhealth.id.app.custom.CustomTextView"
+                                        android:text="a/n Simanjuntak" />
+                                </LinearLayout>
+
+                                <!--<view-->
+                                <!--android:layout_width="wrap_content"-->
+                                <!--android:layout_height="wrap_content"-->
+                                <!--class="net.eazyhealth.id.app.custom.CustomRadioGroup"-->
+                                <!--android:layout_gravity="center">-->
+
+                                <!--<view-->
+                                <!--android:id="@+id/rb_bca"-->
+                                <!--android:layout_width="wrap_content"-->
+                                <!--android:layout_height="wrap_content"-->
+                                <!--class="net.eazyhealth.id.app.custom.CustomRadioButton"/>-->
+                                <!--</view>-->
+                            </LinearLayout>
+                        </view>
 
                         <view
-                            style="@style/text_view_small_grey"
+                            android:id="@+id/btn_mandiri"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            class="net.eazyhealth.id.app.custom.CustomTextView"
-                            android:text="a/n Simanjuntak" />
+                            class="net.eazyhealth.id.app.custom.CustomRippleView">
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:paddingLeft="@dimen/sub_item_padding_left_right"
+                                android:paddingRight="@dimen/sub_item_padding_left_right"
+                                android:paddingTop="10dp"
+                                android:paddingBottom="10dp">
+
+                                <view
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    class="net.eazyhealth.id.app.custom.CustomImageView"
+                                    android:src="@drawable/ic_bank_mandiri"
+                                    android:layout_gravity="center" />
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:orientation="vertical"
+                                    android:paddingLeft="@dimen/sub_item_padding_left_right"
+                                    android:paddingRight="@dimen/sub_item_padding_left_right">
+
+                                    <view
+                                        style="@style/text_view_big_black"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginBottom="@dimen/line_spacing"
+                                        class="net.eazyhealth.id.app.custom.CustomTextView"
+                                        android:text="120-000-01213-01" />
+
+                                    <view
+                                        style="@style/text_view_small_grey"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        class="net.eazyhealth.id.app.custom.CustomTextView"
+                                        android:text="a/n Simanjuntak" />
+                                </LinearLayout>
+
+                                <!--<view-->
+                                <!--android:layout_width="wrap_content"-->
+                                <!--android:layout_height="wrap_content"-->
+                                <!--class="net.eazyhealth.id.app.custom.CustomRadioGroup"-->
+                                <!--android:layout_gravity="center">-->
+
+                                <!--<view-->
+                                <!--android:id="@+id/rb_mandiri"-->
+                                <!--android:layout_width="wrap_content"-->
+                                <!--android:layout_height="wrap_content"-->
+                                <!--class="net.eazyhealth.id.app.custom.CustomRadioButton" />-->
+                                <!--</view>-->
+
+                            </LinearLayout>
+
+                        </view>
+
                     </LinearLayout>
-
-                    <view
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        class="net.eazyhealth.id.app.custom.CustomRadioGroup"
-                        android:layout_gravity="center">
-
-                        <view
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            class="net.eazyhealth.id.app.custom.CustomRadioButton" />
-                    </view>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:paddingLeft="@dimen/sub_item_padding_left_right"
-                    android:paddingRight="@dimen/sub_item_padding_left_right"
-                    android:paddingTop="10dp"
-                    android:paddingBottom="10dp"
-                    android:layout_marginBottom="15dp">
-
-                    <view
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        class="net.eazyhealth.id.app.custom.CustomImageView"
-                        android:src="@drawable/ic_bank_mandiri"
-                        android:layout_gravity="center" />
 
                     <LinearLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:orientation="vertical"
-                        android:paddingLeft="@dimen/sub_item_padding_left_right"
-                        android:paddingRight="@dimen/sub_item_padding_left_right">
-
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
                         <view
-                            style="@style/text_view_big_black"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="@dimen/line_spacing"
-                            class="net.eazyhealth.id.app.custom.CustomTextView"
-                            android:text="120-000-01213-01" />
+                            android:layout_height="match_parent"
+                            android:paddingRight="20dp"
+                            android:paddingLeft="20dp"
+                            class="net.eazyhealth.id.app.custom.CustomRadioGroup">
 
-                        <view
-                            style="@style/text_view_small_grey"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            class="net.eazyhealth.id.app.custom.CustomTextView"
-                            android:text="a/n Simanjuntak" />
+                            <view
+                                android:id="@+id/rb_bca"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                class="net.eazyhealth.id.app.custom.CustomRadioButton" />
+
+                            <view
+                                android:id="@+id/rb_mandiri"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                class="net.eazyhealth.id.app.custom.CustomRadioButton" />
+                        </view>
                     </LinearLayout>
 
-                    <view
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        class="net.eazyhealth.id.app.custom.CustomRadioGroup"
-                        android:layout_gravity="center">
-
-                        <view
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            class="net.eazyhealth.id.app.custom.CustomRadioButton" />
-                    </view>
                 </LinearLayout>
+
             </LinearLayout>
 
             <view
@@ -166,6 +226,7 @@
                 android:paddingBottom="@dimen/sub_item_padding_top_bottom">
 
                 <view
+                    android:id="@+id/et_bank_account"
                     style="@style/edit_text_normal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -174,6 +235,7 @@
                     android:inputType="textCapCharacters" />
 
                 <view
+                    android:id="@+id/et_account_number"
                     style="@style/edit_text_normal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -182,6 +244,7 @@
                     android:inputType="number" />
 
                 <view
+                    android:id="@+id/et_account_name"
                     style="@style/edit_text_normal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -213,6 +276,7 @@
                 android:text="Total :" />
 
             <view
+                android:id="@+id/price"
                 style="@style/text_view_super_big_red"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

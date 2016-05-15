@@ -21,6 +21,7 @@ import net.eazyhealth.id.app.custom.CustomTextView;
 import net.eazyhealth.id.app.dialog.DialogFragmentScheduleDateTime;
 import net.eazyhealth.id.app.interfaces.OnDialogTemplateTwoButton;
 import net.eazyhealth.id.app.model.response.backendless.Mcu;
+import net.eazyhealth.id.app.preferences.DataPreferences;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -158,6 +159,9 @@ public class AdapterItemLoadMore extends RecyclerView.Adapter<RecyclerView.ViewH
             ((TextViewHolder) holder).btnDetail.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    DataPreferences pref = new DataPreferences(context);
+                    pref.setMcuChoosen(data);
+
                     Intent i = new Intent(context.getApplicationContext(), DetailTemplateActivity.class);
                     i.putExtra("title", context.getResources().getString(R.string.detail_medical_checkup));
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {

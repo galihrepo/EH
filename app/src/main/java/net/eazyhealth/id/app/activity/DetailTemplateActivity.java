@@ -17,6 +17,8 @@ public class DetailTemplateActivity extends CustomAppCompatActivity {
 
     private CustomTextView tvTitle;
     private View includeToolbar;
+    private RelativeLayout shoppingCartButton;
+    private CircleTextImageView notificationNumber;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,11 +56,12 @@ public class DetailTemplateActivity extends CustomAppCompatActivity {
                 backToHome();
             }
         });
+
+        shoppingCartButton = (RelativeLayout) includeToolbar.findViewById(R.id.shopping_cart);
+        notificationNumber = (CircleTextImageView) includeToolbar.findViewById(R.id.notification_number);
     }
 
-    private void notificationShoppingCart(View templateToolbar) {
-        RelativeLayout shoppingCartButton = (RelativeLayout) templateToolbar.findViewById(R.id.shopping_cart);
-        CircleTextImageView notificationNumber = (CircleTextImageView) templateToolbar.findViewById(R.id.notification_number);
+    public void notificationShoppingCart() {
         WidgetHelper.setNotificationNumber(this, notificationNumber, shoppingCartButton);
     }
 
@@ -79,6 +82,6 @@ public class DetailTemplateActivity extends CustomAppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        notificationShoppingCart(includeToolbar);
+        notificationShoppingCart();
     }
 }

@@ -44,4 +44,8 @@
     <dimen name="sub_item_padding_left_right">20dp</dimen>
     <dimen name="sub_item_padding_top_bottom">6.5dp</dimen>
 
+    <dimen name="sidemenu_icon_left">12.5dp</dimen>
+    <dimen name="sidemenu_icon_right">7.5dp</dimen>
+    <dimen name="sidemenu_icon_top_bottom">5dp</dimen>
+
 </resources>

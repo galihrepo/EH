@@ -16,6 +16,7 @@ public class DataPreferences {
     private final static String USERNAME = SHARED_PREFERENCE_NAME + ".username";
     private final static String PASSWORD = SHARED_PREFERENCE_NAME + ".password";
     private final static String MEDICAL_CHOOSEN = SHARED_PREFERENCE_NAME + ".medical.choosen";
+    private final static String MCU_CHOOSEN = SHARED_PREFERENCE_NAME + ".mcu.choosen";
 
     private SharedPreferences prefs;
     private SharedPreferences.Editor editor;
@@ -57,4 +58,13 @@ public class DataPreferences {
             return GsonHelper.getListObjects(data);
         }
     }
+
+    public void setMcuChoosen(Mcu mcu) {
+        prefs.edit().putString(MCU_CHOOSEN, GsonHelper.getString(mcu)).apply();
+    }
+
+    public Mcu getMcuChoosen() {
+        return GsonHelper.getObjects(prefs.getString(MCU_CHOOSEN, ""));
+    }
+
 }

@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import net.eazyhealth.id.app.R;
 import net.eazyhealth.id.app.activity.PaymentActivity;
@@ -27,6 +28,8 @@ public class FragmentCart extends Fragment {
 
     private RecyclerView rv;
     private AdapterCart adapter;
+    private LinearLayout layoutEmptyCart;
+    private CustomRippleView btnPay;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -41,20 +44,28 @@ public class FragmentCart extends Fragment {
         rv.setHasFixedSize(true);
         rv.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-        CustomRippleView btnPay = (CustomRippleView) view.findViewById(R.id.btn_payment);
+        btnPay = (CustomRippleView) view.findViewById(R.id.btn_payment);
         btnPay.setOnRippleCompleteListener(new RippleViewAndroidM.OnRippleCompleteListener() {
             @Override
             public void onComplete(RippleViewAndroidM rippleView) {
                 getActivity().startActivityForResult(new Intent(getActivity(), PaymentActivity.class), 0);
             }
         });
+
+        layoutEmptyCart = (LinearLayout) view.findViewById(R.id.layout_empty);
     }
 
     public void refreshData() {
         List<Mcu> data = MyApplication.getInstance().getDataPreferences().getMedicalChoosen();
         if (data == null || data.size() < 1) {
             data = new LinkedList<>();
+            layoutEmptyCart.setVisibility(View.VISIBLE);
+            btnPay.setClickable(false);
+        } else {
+            layoutEmptyCart.setVisibility(View.GONE);
+            btnPay.setClickable(true);
         }
+
         adapter = new AdapterCart(getActivity(), data, this);
         rv.setAdapter(adapter);
     }

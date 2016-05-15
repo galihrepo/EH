@@ -18,6 +18,7 @@
             android:background="@android:color/white" />
 
         <LinearLayout
+            android:id="@+id/layout_choose_payment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="10dp"
@@ -63,4 +64,29 @@
             </view>
         </LinearLayout>
     </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_empty"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@android:color/white"
+        android:gravity="center"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_empty_cart" />
+
+        <view
+            style="@style/text_view_big_grey"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            class="net.eazyhealth.id.app.custom.CustomTextView"
+            android:text="@string/empty_cart" />
+
+    </LinearLayout>
+
 </FrameLayout>

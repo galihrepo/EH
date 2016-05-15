@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
     <view
         android:layout_width="match_parent"
@@ -22,205 +23,110 @@
                 android:paddingTop="20dp"
                 android:paddingBottom="20dp"
                 android:layout_gravity="center"/>
-            <view
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                class="net.eazyhealth.id.app.custom.CustomTableLayout">
-                <view
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    class="net.eazyhealth.id.app.custom.CustomTableRow">
-                    <view
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        class="net.eazyhealth.id.app.custom.CustomImageView"
-                        android:src="@drawable/name"
-                        android:layout_column="1"
-                        android:paddingRight="@dimen/padding_profile_icon"/>
-                    <view
-                        style="@style/edit_text_normal"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        class="net.eazyhealth.id.app.custom.CustomEditText"
-                        android:layout_column="2"
-                        android:text="galih"
-                        android:inputType="textCapWords" />
-                </view>
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
                 <view
+                        style="@style/edit_text_normal"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    class="net.eazyhealth.id.app.custom.CustomTableRow">
-                    <view
-                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        class="net.eazyhealth.id.app.custom.CustomImageView"
-                        android:src="@drawable/address"
-                        android:layout_column="1"
-                        android:paddingRight="@dimen/padding_profile_icon"/>
+                        class="net.eazyhealth.id.app.custom.CustomEditText"
+                    android:hint="@string/hint_name"
+                    android:inputType="textCapWords"
+                    android:drawableLeft="@drawable/name"
+                    android:drawablePadding="@dimen/sidemenu_icon_left" />
+
                     <view
                         style="@style/edit_text_normal"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
                         class="net.eazyhealth.id.app.custom.CustomEditText"
-                        android:layout_column="2"
-                        android:text="Jalan Jakarta No 17"
-                        android:inputType="text" />
-                </view>
+                        android:hint="@string/hint_address"
+                        android:drawableLeft="@drawable/address"
+                        android:inputType="text"
+                        android:drawablePadding="@dimen/sidemenu_icon_left" />
 
-                <view
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    class="net.eazyhealth.id.app.custom.CustomTableRow">
-                    <view
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        class="net.eazyhealth.id.app.custom.CustomImageView"
-                        android:src="@drawable/phone"
-                        android:layout_column="1"
-                        android:paddingRight="@dimen/padding_profile_icon"/>
+
                     <view
                         style="@style/edit_text_normal"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
+                        android:drawableLeft="@drawable/phone"
                         class="net.eazyhealth.id.app.custom.CustomEditText"
-                        android:layout_column="2"
-                        android:text="+628563388909"
-                        android:inputType="phone" />
-                </view>
+                        android:hint="@string/hint_mobile_phone"
+                        android:inputType="phone"
+                        android:drawablePadding="@dimen/sidemenu_icon_left" />
 
-                <view
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    class="net.eazyhealth.id.app.custom.CustomTableRow">
-                    <view
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        class="net.eazyhealth.id.app.custom.CustomImageView"
-                        android:src="@drawable/email"
-                        android:layout_column="1"
-                        android:paddingRight="@dimen/padding_profile_icon"/>
                     <view
                         style="@style/edit_text_normal"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
                         class="net.eazyhealth.id.app.custom.CustomEditText"
-                        android:layout_column="2"
-                        android:text="galihadityo@yahoo.co.id"
-                        android:inputType="textEmailAddress" />
-                </view>
+                        android:hint="@string/hint_email"
+                        android:inputType="textEmailAddress"
+                        android:drawableLeft="@drawable/email"
+                        android:drawablePadding="@dimen/sidemenu_icon_left" />
 
-                <view
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    class="net.eazyhealth.id.app.custom.CustomTableRow">
-                    <view
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        class="net.eazyhealth.id.app.custom.CustomImageView"
-                        android:src="@drawable/birthday"
-                        android:layout_column="1"
-                        android:paddingRight="@dimen/padding_profile_icon"/>
                     <view
                         style="@style/edit_text_normal"
                         android:id="@+id/birthday_et"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
                         class="net.eazyhealth.id.app.custom.CustomEditText"
-                        android:layout_column="2"
-                        android:text="28 March 1986"
-                        android:inputType="date" />
-                </view>
+                        android:hint="@string/hint_birthday"
+                        android:inputType="date"
+                        android:drawableLeft="@drawable/birthday"
+                        android:drawablePadding="@dimen/sidemenu_icon_left" />
 
-                <view
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    class="net.eazyhealth.id.app.custom.CustomTableRow">
-                    <view
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        class="net.eazyhealth.id.app.custom.CustomImageView"
-                        android:src="@drawable/gender"
-                        android:layout_column="1"
-                        android:paddingRight="@dimen/padding_profile_icon"/>
                     <view
                         style="@style/edit_text_normal"
                         android:id="@+id/gender_et"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
                         class="net.eazyhealth.id.app.custom.CustomEditText"
-                        android:layout_column="2"
-                        android:text="Pria"
-                        android:inputType="text" />
-                </view>
+                        android:hint="@string/hint_gender"
+                        android:inputType="text"
+                        android:drawableLeft="@drawable/gender"
+                        android:drawablePadding="@dimen/sidemenu_icon_left" />
 
-                <view
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    class="net.eazyhealth.id.app.custom.CustomTableRow">
-                    <view
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        class="net.eazyhealth.id.app.custom.CustomImageView"
-                        android:src="@drawable/age"
-                        android:layout_column="1"
-                        android:paddingRight="@dimen/padding_profile_icon"/>
-                    <view
-                        style="@style/edit_text_normal"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        class="net.eazyhealth.id.app.custom.CustomEditText"
-                        android:layout_column="2"
-                        android:text="32 Tahun"
-                        android:inputType="text" />
-                </view>
-
-                <view
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    class="net.eazyhealth.id.app.custom.CustomTableRow">
-                    <view
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        class="net.eazyhealth.id.app.custom.CustomImageView"
-                        android:src="@drawable/blood"
-                        android:layout_column="1"
-                        android:paddingRight="@dimen/padding_profile_icon"/>
+                    android:orientation="horizontal">
                     <view
                         style="@style/edit_text_normal"
                         android:id="@+id/blood_type_et"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
                         class="net.eazyhealth.id.app.custom.CustomEditText"
-                        android:layout_column="2"
-                        android:text="A"
-                        android:inputType="text" />
-                    <view
-                        style="@style/text_view_normal_grey"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        class="net.eazyhealth.id.app.custom.CustomTextView"
-                        android:layout_column="3"
-                        android:text="(Golongan darah)"/>
-                </view>
-            </view>
+                        android:hint="@string/hint_blood"
+                        android:inputType="text"
+                        android:drawableLeft="@drawable/blood"
+                        android:drawablePadding="@dimen/sidemenu_icon_left" />
+                </LinearLayout>
+            </LinearLayout>
 
             <view
-                style="@style/text_view_big_black"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                class="net.eazyhealth.id.app.custom.CustomButton"
-                android:text="@string/update"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="20dp"/>
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                class="net.eazyhealth.id.app.custom.CustomRippleView"
+                android:layout_gravity="center_horizontal">
+
+                <view
+                    style="@style/text_view_big_white"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    class="net.eazyhealth.id.app.custom.CustomTextView"
+                    android:background="@color/pink_0"
+                    android:text="@string/update"
+                    android:padding="10dp"
+                    android:gravity="center" />
+            </view>
 
         </view>
     </view>

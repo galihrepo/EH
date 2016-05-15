@@ -1,8 +1,8 @@
 package net.eazyhealth.id.app.activity;
 
-import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
-import android.support.design.widget.NavigationView;
+import android.os.CountDownTimer;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -14,12 +14,13 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 
-import com.facebook.CallbackManager;
-import com.facebook.FacebookSdk;
 import com.thinkcool.circletextimageview.CircleTextImageView;
 
 import net.eazyhealth.id.app.R;
 import net.eazyhealth.id.app.custom.CustomAppCompatActivity;
+import net.eazyhealth.id.app.custom.CustomRippleView;
+import net.eazyhealth.id.app.custom.CustomTextView;
+import net.eazyhealth.id.app.custom.RippleViewAndroidM;
 import net.eazyhealth.id.app.dialog.DialogFragmentTemplateTwoButton;
 import net.eazyhealth.id.app.fragment.FragmentDashboard;
 import net.eazyhealth.id.app.fragment.FragmentLogin;
@@ -29,16 +30,22 @@ import net.eazyhealth.id.app.helper.WidgetHelper;
 import net.eazyhealth.id.app.interfaces.OnDialogTemplateTwoButton;
 import net.eazyhealth.id.app.preferences.DataPreferences;
 
-public class HomeActivity extends CustomAppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class HomeActivity extends CustomAppCompatActivity implements RippleViewAndroidM.OnRippleCompleteListener {
 
     private FrameLayout placeholder;
     private DataPreferences dataPreferences;
-    private NavigationView navigationView;
+    //    private NavigationView navigationView;
     private Toolbar toolbar;
     private View templateToolbar;
 
-    // facebook
-    private CallbackManager callbackManager;
+    private CustomRippleView btnDashboard;
+    private CustomRippleView btnLogin;
+    private CustomRippleView btnSchedule;
+    private CustomRippleView btnHistory;
+    private CustomRippleView btnProfile;
+    private CustomRippleView btnLogout;
+
+    private CustomTextView tvTitle;
 
     @Override
     protected void onResume() {
@@ -51,28 +58,41 @@ public class HomeActivity extends CustomAppCompatActivity implements NavigationV
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        // facebook
-        FacebookSdk.sdkInitialize(this);
-        callbackManager = CallbackManager.Factory.create();
-
         dataPreferences = new DataPreferences(this);
 
         includeView();
+        navigationView();
+    }
 
+    private void navigationView() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
-        navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
+//        navigationView = (NavigationView) findViewById(R.id.nav_view);
 
-        if (dataPreferences.getUsername() == null) {
-            navigationView.inflateMenu(R.menu.sidemenu);
-        } else {
-            navigationView.inflateMenu(R.menu.sidemenu_patients);
-        }
+        View sidemenu = findViewById(R.id.sidemenu);
+        btnDashboard = (CustomRippleView) sidemenu.findViewById(R.id.rv_dashboard);
+        btnLogin = (CustomRippleView) sidemenu.findViewById(R.id.rv_login);
+        btnSchedule = (CustomRippleView) sidemenu.findViewById(R.id.rv_schedule);
+        btnHistory = (CustomRippleView) sidemenu.findViewById(R.id.rv_history);
+        btnProfile = (CustomRippleView) sidemenu.findViewById(R.id.rv_profile);
+        btnLogout = (CustomRippleView) sidemenu.findViewById(R.id.rv_logout);
+
+        btnDashboard.setOnRippleCompleteListener(this);
+        btnLogin.setOnRippleCompleteListener(this);
+        btnSchedule.setOnRippleCompleteListener(this);
+        btnHistory.setOnRippleCompleteListener(this);
+        btnProfile.setOnRippleCompleteListener(this);
+        btnLogout.setOnRippleCompleteListener(this);
+
+//        if (dataPreferences.getUsername() == null) {
+//            navigationView.inflateMenu(R.menu.sidemenu);
+//        } else {
+//            navigationView.inflateMenu(R.menu.sidemenu_patients);
+//        }
         menuDashboard();
     }
 
@@ -85,6 +105,7 @@ public class HomeActivity extends CustomAppCompatActivity implements NavigationV
         toolbar.setTitle("");
         setSupportActionBar(toolbar);
 
+        tvTitle = (CustomTextView) templateToolbar.findViewById(R.id.title_tv);
         placeholder = (FrameLayout) insideInclude.findViewById(R.id.placeholder);
     }
 
@@ -131,66 +152,77 @@ public class HomeActivity extends CustomAppCompatActivity implements NavigationV
         return super.onOptionsItemSelected(item);
     }
 
-    @SuppressWarnings("StatementWithEmptyBody")
-    @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
-        int id = item.getItemId();
-        if (id == R.id.sidemenu_schedule) {
-            getSupportFragmentManager().beginTransaction().replace(placeholder.getId(), new FragmentPatientsSchedule()).commit();
-        } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.sidemenu_profile) {
-            getSupportFragmentManager().beginTransaction().replace(placeholder.getId(), new FragmentPatientsProfile()).commit();
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.sidemenu_logout) {
-            final DialogFragmentTemplateTwoButton dialog = new DialogFragmentTemplateTwoButton();
-            dialog.setTitle("Logout");
-            dialog.setContent("Logout dari aplikasi?");
-            dialog.setButtonNoText("Tidak");
-            dialog.setButtonYesText("Ya");
-            dialog.setListener(new OnDialogTemplateTwoButton() {
-                @Override
-                public void onTemplateDialogNo() {
-                    dialog.dismiss();
-                }
-
-                @Override
-                public void onTemplateDialogYes() {
-                    dataPreferences.setUsername(null);
-                    dataPreferences.setPassword(null);
-                    dialog.dismiss();
-                    recreate();
-//                    finish();
-                }
-            });
-            dialog.show(getSupportFragmentManager(), "");
-        } else if (id == R.id.sidemenu_login) {
-            getSupportFragmentManager().beginTransaction().replace(placeholder.getId(), new FragmentLogin()).commit();
-        } else if (id == R.id.sidemenu_dashboard) {
-            getSupportFragmentManager().beginTransaction().replace(placeholder.getId(), new FragmentDashboard()).commit();
-        }
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
-        return true;
-    }
-
     private void menuDashboard() {
-        navigationView.getMenu().getItem(0).setChecked(true);
+        //noinspection deprecation
+        btnDashboard.setBackgroundColor(getResources().getColor(R.color.grey_3));
+        tvTitle.setText(getString(R.string.menu_dashboard));
+
         getSupportFragmentManager().beginTransaction().replace(placeholder.getId(), new FragmentDashboard()).commit();
     }
 
-    public CallbackManager getFacebookCallbackManager() {
-        return callbackManager;
-    }
-
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        callbackManager.onActivityResult(requestCode, resultCode, data);
+    public void onComplete(final RippleViewAndroidM rippleView) {
+        btnDashboard.setBackgroundColor(Color.WHITE);
+        btnLogin.setBackgroundColor(Color.WHITE);
+        btnSchedule.setBackgroundColor(Color.WHITE);
+        btnHistory.setBackgroundColor(Color.WHITE);
+        btnProfile.setBackgroundColor(Color.WHITE);
+        btnLogout.setBackgroundColor(Color.WHITE);
+
+        //noinspection deprecation
+        rippleView.setBackgroundColor(getResources().getColor(R.color.grey_3));
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
+
+        new CountDownTimer(250, 250) {
+            public void onTick(long millisUntilFinished) {
+            }
+
+            public void onFinish() {
+                if (rippleView == btnDashboard) {
+                    tvTitle.setText(getString(R.string.menu_dashboard));
+                    getSupportFragmentManager().beginTransaction().replace(placeholder.getId(), new FragmentDashboard()).commit();
+
+                } else if (rippleView == btnLogin) {
+                    tvTitle.setText(getString(R.string.menu_login));
+                    getSupportFragmentManager().beginTransaction().replace(placeholder.getId(), new FragmentLogin()).commit();
+
+                } else if (rippleView == btnSchedule) {
+                    tvTitle.setText(getString(R.string.menu_schedule));
+                    getSupportFragmentManager().beginTransaction().replace(placeholder.getId(), new FragmentPatientsSchedule()).commit();
+
+                } else if (rippleView == btnHistory) {
+                    tvTitle.setText(getString(R.string.menu_history));
+
+                } else if (rippleView == btnProfile) {
+                    tvTitle.setText(getString(R.string.menu_profile));
+                    getSupportFragmentManager().beginTransaction().replace(placeholder.getId(), new FragmentPatientsProfile()).commit();
+
+                } else if (rippleView == btnLogout) {
+                    final DialogFragmentTemplateTwoButton dialog = new DialogFragmentTemplateTwoButton();
+                    dialog.setTitle("Logout");
+                    dialog.setContent("Logout dari aplikasi?");
+                    dialog.setButtonNoText("Tidak");
+                    dialog.setButtonYesText("Ya");
+                    dialog.setListener(new OnDialogTemplateTwoButton() {
+                        @Override
+                        public void onTemplateDialogNo() {
+                            dialog.dismiss();
+                        }
+
+                        @Override
+                        public void onTemplateDialogYes() {
+                            dataPreferences.setUsername(null);
+                            dataPreferences.setPassword(null);
+                            dialog.dismiss();
+                            recreate();
+                            //                    finish();
+                        }
+                    });
+                    dialog.show(getSupportFragmentManager(), "");
+                }
+            }
+        }.start();
     }
 }

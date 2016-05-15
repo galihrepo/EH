@@ -19,7 +19,6 @@ import net.eazyhealth.id.app.R;
 import net.eazyhealth.id.app.activity.HomeActivity;
 import net.eazyhealth.id.app.activity.RegistrationActivity;
 import net.eazyhealth.id.app.custom.CustomAutoCompleteTextView;
-import net.eazyhealth.id.app.custom.CustomButton;
 import net.eazyhealth.id.app.custom.CustomCheckBox;
 import net.eazyhealth.id.app.custom.CustomEditText;
 import net.eazyhealth.id.app.custom.CustomProgressDialog;
@@ -63,10 +62,10 @@ public class FragmentLogin extends Fragment {
             }
         });
 
-        CustomButton btnLogin = (CustomButton) view.findViewById(R.id.login_btn);
-        btnLogin.setOnClickListener(new View.OnClickListener() {
+        CustomRippleView btnLogin = (CustomRippleView) view.findViewById(R.id.login_btn);
+        btnLogin.setOnRippleCompleteListener(new RippleViewAndroidM.OnRippleCompleteListener() {
             @Override
-            public void onClick(View v) {
+            public void onComplete(RippleViewAndroidM rippleView) {
                 if (etUsername.getText().toString().trim().length() == 0) {
                     CustomToast.showSnackbar(snackbar, "Username still empty");
                     etUsername.requestFocus();
@@ -121,17 +120,7 @@ public class FragmentLogin extends Fragment {
         btnLoginFb.setOnRippleCompleteListener(new RippleViewAndroidM.OnRippleCompleteListener() {
             @Override
             public void onComplete(RippleViewAndroidM rippleView) {
-                Backendless.UserService.loginWithFacebookSdk(getActivity(), parentActivity.getFacebookCallbackManager(), new AsyncCallback<BackendlessUser>() {
-                    @Override
-                    public void handleResponse(BackendlessUser response) {
 
-                    }
-
-                    @Override
-                    public void handleFault(BackendlessFault fault) {
-
-                    }
-                });
             }
         });
 
