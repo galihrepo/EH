@@ -18,6 +18,7 @@ import net.eazyhealth.id.app.custom.CustomEditText;
 import net.eazyhealth.id.app.custom.CustomRippleView;
 import net.eazyhealth.id.app.custom.CustomToast;
 import net.eazyhealth.id.app.custom.RippleViewAndroidM;
+import net.eazyhealth.id.app.model.BackendlessProperties;
 import net.steamcrafted.loadtoast.LoadToast;
 
 /**
@@ -94,7 +95,9 @@ public class FragmentRegistration extends Fragment {
         BackendlessUser user = new BackendlessUser();
         user.setEmail(etEmail.getText().toString().trim());
         user.setPassword(etPassword.getText().toString().trim());
-        user.setProperty("name", etName.getText().toString().trim());
+
+        user.setProperty(BackendlessProperties.USERS_NAME, etName.getText().toString().trim());
+        user.setProperty(BackendlessProperties.USERS_PASSWORD, etPassword.getText().toString().trim());
 
         final LoadToast load = new LoadToast(getActivity());
         load.setText("Sending data..");

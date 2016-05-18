@@ -3,6 +3,8 @@ package net.eazyhealth.id.app.application;
 import android.app.Application;
 
 import com.backendless.Backendless;
+import com.facebook.FacebookSdk;
+import com.facebook.appevents.AppEventsLogger;
 
 import net.danlew.android.joda.JodaTimeAndroid;
 import net.eazyhealth.id.app.preferences.DataPreferences;
@@ -37,10 +39,18 @@ public class MyApplication extends Application {
         super.onCreate();
         mInstance = this;
 
+        // shared preferences
         dataPreferences = new DataPreferences(getApplicationContext());
 
+        // joda time
         JodaTimeAndroid.init(this);
+
+        // backendless
         Backendless.initApp(this, BL_APP_ID, BL_ANDROID_SECRET_KEY, BL_APP_VERSION);
+
+        // Initialize the SDK before executing any other operations,
+        FacebookSdk.sdkInitialize(getApplicationContext());
+        AppEventsLogger.activateApp(this);
     }
 
     public static synchronized MyApplication getInstance() {

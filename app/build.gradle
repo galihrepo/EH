@@ -70,4 +70,7 @@ dependencies {
 
     // storage
     compile 'com.sromku:simple-storage:1.2.0'
+
+    // sdk facebook
+    compile 'com.facebook.android:facebook-android-sdk:4.11.0'
 }

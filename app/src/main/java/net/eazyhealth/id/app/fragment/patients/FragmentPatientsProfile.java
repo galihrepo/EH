@@ -3,7 +3,6 @@ package net.eazyhealth.id.app.fragment.patients;
 import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.text.InputType;
 import android.util.SparseArray;
@@ -23,6 +22,7 @@ import net.eazyhealth.id.app.helper.DateHelper;
 import net.eazyhealth.id.app.helper.DimensionHelper;
 import net.eazyhealth.id.app.helper.WidgetManipulation;
 import net.eazyhealth.id.app.interfaces.OnOptionInterface;
+import net.eazyhealth.id.app.model.BackendlessProperties;
 
 /**
  * Created by GALIH ADITYO on 3/23/2016.
@@ -163,8 +163,8 @@ public class FragmentPatientsProfile extends Fragment implements View.OnFocusCha
         WidgetManipulation.hideKeyboard(getActivity(), btnBloodType);
 
         SparseArray<String> data = new SparseArray<>();
-        data.put(0, "Pria");
-        data.put(1, "Wanita");
+        data.put(0, BackendlessProperties.USERS_GENDER_MALE);
+        data.put(1, BackendlessProperties.USERS_GENDER_FEMALE);
 
         final DialogFragmentOption dialog = new DialogFragmentOption();
         dialog.setTitle("Jenis Kelamin");
